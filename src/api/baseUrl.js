@@ -7,9 +7,9 @@ export const IS_DEV = ENV === CONFIG_ENV_DEV
 export const IS_TEST = ENV === CONFIG_ENV_TEST
 export const IS_PROD = ENV === CONFIG_ENV_PROD
 
-export const API_ORIGIN_DEV = 'https://yx-dev.hebyinkai.com'
+export const API_ORIGIN_DEV = 'https://dev.com'
 export const API_ORIGIN_TEST = 'https://test.com'
-export const API_ORIGIN_PROD = 'https://pro.com'
+export const API_ORIGIN_PROD = 'https://prod.com'
 
 export const API_ORIGIN = IS_PROD
   ? API_ORIGIN_PROD
