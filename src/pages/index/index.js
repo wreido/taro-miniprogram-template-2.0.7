@@ -24,24 +24,15 @@ class Index extends Component {
 
   }
 
-  //组件销毁期
-  componentWillUnmount() {
-
-  }
-
   //组件显示期
   componentDidShow() {
-    this.getOrderList()
+    this.getGoodsList()
   }
 
-  //页面隐藏
-  componentDidHide() {
-
-  }
-
-  getOrderList = async () => {
+  //获取商品列表
+  getGoodsList = async () => {
     try {
-      const { data } = await $fetch($api.orderList, { a: 1 })
+      const { data } = await $fetch($api.getgoodsList)
       console.log(data)
     } catch (err) {
       console.error(err)

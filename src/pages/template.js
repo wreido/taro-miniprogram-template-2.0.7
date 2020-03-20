@@ -26,18 +26,13 @@ class GoodsDetail extends Component {
 
   }
 
-  //组件显示期
-  componentDidShow() {
-
-  }
-
   //组件销毁期
   componentWillUnmount() {
 
   }
 
-  //已经装载的组件接收到新属性前调用
-  componentWillReceiveProps() {
+  //组件显示期
+  componentDidShow() {
 
   }
 
