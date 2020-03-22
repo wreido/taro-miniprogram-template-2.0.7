@@ -1,6 +1,7 @@
 import Taro from '@tarojs/taro'
 import enumList from '@/utils/enumList'
 import md5 from 'js-md5';
+import store from "@/store";
 import { API_ORIGIN } from './baseUrl'
 
 
@@ -41,8 +42,8 @@ const $fetch = (path, data = {}, options = { loading: true }) => {
       sId: enumList.sId,
       sign: md5(`timestamp=${enumList.currTime}&sId=${enumList.sId}&apiKey=${enumList.signKey}`).slice(3, 13),
       appType: enumList.appType,
-      authentication: '',
-      userId: '',
+      authentication: store.loginFlow.userId,
+      userId: store.loginFlow.userId,
       ...options.header,
     },
   }
@@ -53,6 +54,7 @@ const $fetch = (path, data = {}, options = { loading: true }) => {
     Taro.request(ops)
       .then((res) => {
         Taro.hideLoading()
+        console.warn(ops, res)
         if (res.data.status !== 200) {
           showErrorMsg(res.data.msg)
           reject(res || {})

@@ -31,40 +31,44 @@ const LoginFlow = observable({
   },
   //更新微信加密串
   updateWXEncryptionKey(WXEncryptionKey) {
-    this.WXEncryptionKey = WXEncryptionKey
+    this.WXEncryptionKey = WXEncryptionKey.detail
   },
   //登录
   async authorizedLogin(option) {
-    try {
-      Taro.showLoading({ mask: true, title: '加载中' })
-      const { WXEncryptionKey, openId, sharePram, mobileIn, mobileCode } = option
-      let param = {
-        appType: enumList.appType,
-        openId,
-        ivData: WXEncryptionKey.detail.iv,
-        encryptedData: WXEncryptionKey.detail.encryptedData,
-        invitationCode: sharePram.invitationCode || '',
-        mobileIn,
-        mobileCode
+    return new Promise(async (resolve) => {
+      try {
+        Taro.showLoading({ mask: true, title: '加载中' })
+        const { WXEncryptionKey, openId, sharePram, mobileIn, mobileCode } = option
+        let param = {
+          appType: enumList.appType,
+          openId,
+          ivData: WXEncryptionKey.iv,
+          encryptedData: WXEncryptionKey.encryptedData,
+          invitationCode: sharePram.invitationCode || '',
+          mobileIn,
+          mobileCode
+        }
+        const { data } = await $fetch($api.login, param)
+        Taro.hideLoading()
+        this.userId = data
+        Taro.setStorageSync('userId', this.userId)
+        await this.asyncUpdateUserInfo()
+        resolve(this.userInfo)
+      } catch (err) {
+        console.log('登录', err)
+        //登录失败重新刷新session_key
+        await this.asyncUpdateOpenId()
       }
-      const { data } = await $fetch($api.login, param)
-      Taro.hideLoading()
-      this.userId = data
-      Taro.setStorageSync('userId', this.userId)
-      this.asyncUpdateUserInfo(this.userId, openId)
-    } catch (err) {
-      console.log('登录', err)
-      await this.asyncUpdateOpenId()
-    }
+    })
   },
   //获取用户信息
-  async asyncUpdateUserInfo(userId, openId) {
+  async asyncUpdateUserInfo() {
     try {
       Taro.showLoading({ mask: true, title: '加载中' })
-      const user = await $fetch($api.getuserInfo, {}, { loading: true, header: { userId } })
-      let leader = await $fetch($api.getLeaderInfo, { memberId: user.data.fakeHeadId }, { loading: true, header: { userId } })
+      const user = await $fetch($api.getuserInfo)
+      let leader = await $fetch($api.getLeaderInfo, { memberId: user.data.fakeHeadId })
       Taro.hideLoading()
-      this.userInfo = { user: user.data, leader: leader.data, openId }
+      this.userInfo = { user: user.data, leader: leader.data, openId: this.openId }
       Taro.setStorageSync('userInfo', this.userInfo)
     } catch (err) {
       console.error('获取用户信息', err)

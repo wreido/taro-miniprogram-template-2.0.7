@@ -7,7 +7,7 @@ import { observer, inject } from "@tarojs/mobx"
 
 import './index.scss'
 
-@inject('counterFlow')
+@inject('loginFlow')
 @observer
 
 class GoodsDetail extends Component {
@@ -29,6 +29,7 @@ class GoodsDetail extends Component {
   }
   // 组件显示期
   componentDidShow() {
+    if (!this.props.loginFlow.userId) Taro.navigateTo({ url: '/publiPages/login/authorizedLogin/index' })
   }
 
 

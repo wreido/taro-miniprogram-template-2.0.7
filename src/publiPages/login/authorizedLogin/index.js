@@ -45,6 +45,8 @@ class GoodsDetail extends Component {
       WXEncryptionKey: this.props.loginFlow.WXEncryptionKey,
       openId: this.props.loginFlow.openId,
       sharePram: this.props.shareFlow.sharePram
+    }).then(() => {
+      Taro.navigateBack()
     })
   }
 
