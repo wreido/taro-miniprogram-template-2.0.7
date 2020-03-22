@@ -30,11 +30,11 @@ const LoginFlow = observable({
     }
   },
   //更新微信加密串
-  updateWXEncryptionKey(WXEncryptionKey) {
+  setWXEncryptionKey(WXEncryptionKey) {
     this.WXEncryptionKey = WXEncryptionKey.detail
   },
   //登录
-  async authorizedLogin(option) {
+  async asyncAuthorizedLogin(option) {
     return new Promise(async (resolve) => {
       try {
         Taro.showLoading({ mask: true, title: '加载中' })
