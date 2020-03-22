@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
-import $fetch, { $api } from '@/api'
 import { observer, inject } from '@tarojs/mobx'
+import GoodsList from './components/goodsList'
 
 import './index.scss'
 
@@ -26,38 +26,30 @@ class Index extends Component {
 
   //组件显示期
   componentDidShow() {
-    this.getGoodsList()
-  }
 
-  //获取商品列表
-  getGoodsList = async () => {
-    try {
-      const { data } = await $fetch($api.getgoodsList)
-      console.log(data)
-    } catch (err) {
-      console.error(err)
-    }
   }
 
   increment = () => {
-    const { counterFlow } = this.props
-    counterFlow.increment()
+    this.props.counterFlow.increment()
   }
 
   decrement = () => {
-    const { counterFlow } = this.props
-    counterFlow.decrement()
+    this.props.counterFlow.decrement()
   }
 
   incrementAsync = () => {
-    const { counterFlow } = this.props
-    counterFlow.incrementAsync()
+    this.props.counterFlow.incrementAsync()
+  }
+
+  onReachBottom() {
+    this.props.counterFlow.incrementAsync()
   }
 
   render() {
     const { counterFlow: { counter } } = this.props
     return (
       <View className='index'>
+        <GoodsList type={counter}></GoodsList>
         <Button onClick={this.increment}>+</Button>
         <Button onClick={this.decrement}>-</Button>
         <Button onClick={this.incrementAsync}>Add Async</Button>

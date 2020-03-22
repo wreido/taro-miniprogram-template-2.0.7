@@ -1,5 +1,8 @@
 import Taro from '@tarojs/taro'
+import enumList from '@/utils/enumList'
+import md5 from 'js-md5';
 import { API_ORIGIN } from './baseUrl'
+
 
 // 添加拦截器
 // Taro.addInterceptor(Taro.interceptors.logInterceptor)
@@ -34,6 +37,12 @@ const $fetch = (path, data = {}, options = { loading: true }) => {
     method: options.method ? options.method : 'POST',
     dataType: 'json',
     header: {
+      timestamp: enumList.currTime,
+      sId: enumList.sId,
+      sign: md5(`timestamp=${enumList.currTime}&sId=${enumList.sId}&apiKey=${enumList.signKey}`).slice(3, 13),
+      appType: enumList.appType,
+      authentication: '',
+      userId: '',
       ...options.header,
     },
   }
@@ -44,7 +53,11 @@ const $fetch = (path, data = {}, options = { loading: true }) => {
     Taro.request(ops)
       .then((res) => {
         Taro.hideLoading()
-        resolve(res || {})
+        if (res.data.status !== 200) {
+          showErrorMsg(res.data.msg)
+          reject(res || {})
+        }
+        resolve(res.data || {})
       })
       .catch((err) => {
         Taro.hideLoading()

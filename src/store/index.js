@@ -1,7 +1,11 @@
 import counterFlow from './module/counterFlow'
+import loginFlow from './module/loginFlow'
+import shareFlow from './module/shareFlow'
 
 const Store = {
-  counterFlow
+  loginFlow,
+  counterFlow,
+  shareFlow
 }
 
 export default Store

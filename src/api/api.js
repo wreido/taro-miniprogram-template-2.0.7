@@ -13,7 +13,7 @@ export default {
    * 登录 注册 用户
   */
   //登录
-  getOpenId: `${REST}/api/mp/community/weixin/none/login`,
+  login: `${REST}/api/mp/community/weixin/none/login`,
   //获取手机验证码
   getValidCode: `${REST}/api/mp/community/weixin/none/getValidCode`,
   //获取openId
