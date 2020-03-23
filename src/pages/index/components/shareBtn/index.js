@@ -1,6 +1,6 @@
 /**
- * 首页 分享按钮
- */
+* 首页 分享按钮
+*/
 import Taro, { Component } from '@tarojs/taro'
 import { View, MovableArea, MovableView } from '@tarojs/components'
 import { observer, inject } from "@tarojs/mobx"

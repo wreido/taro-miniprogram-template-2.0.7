@@ -1,7 +1,6 @@
 /**
- * 首页 热门推荐商品 组件
+ * 分享模态框
  */
-
 import Taro, { Component } from '@tarojs/taro'
 import { View, Image, Text, Icon, Button } from '@tarojs/components'
 import { observer, inject } from "@tarojs/mobx"
@@ -18,18 +17,16 @@ class ShareModal extends Component {
     extraData: {}
   }
 
-  state = {}
-
-  // Dom渲染完成
-  componentDidMount() { }
   // 组件显示期
   componentDidShow() {
     this.props.shareFlow.showShareModal = false
   }
+
   // 组件销毁期
   componentWillUnmount() {
     this.props.shareFlow.showShareModal = false
   }
+
   // 销毁
   componentDidHide() {
     this.props.shareFlow.showShareModal = false
