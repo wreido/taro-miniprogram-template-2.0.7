@@ -29,7 +29,7 @@ class GoodsDetail extends Component {
   }
   // 组件显示期
   componentDidShow() {
-    if (!this.props.loginFlow.userId) Taro.navigateTo({ url: '/publiPages/login/authorizedLogin/index' })
+
   }
 
 
@@ -39,13 +39,15 @@ class GoodsDetail extends Component {
   }
 
 
-  componentDidHide() {
-
+  test = () => {
+    Taro.navigateTo({ url: '/publiPages/login/authorizedLogin/index' })
   }
 
   render() {
     return (
-      <View></View>
+      <View>
+        <View onClick={this.test}>登录</View>
+      </View>
     )
   }
 }

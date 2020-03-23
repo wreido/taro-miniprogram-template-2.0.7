@@ -1,5 +1,5 @@
 /* 
-* 顶层视图 应用顶层
+* 微信授权登录
 */
 import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Image } from '@tarojs/components'
@@ -13,29 +13,12 @@ import './index.scss'
 class GoodsDetail extends Component {
   // 配置
   config = {
-    navigationBarTitleText: '页面模板',
+    navigationBarTitleText: '注册/登录'
   }
 
-  state = {}
-
-  //初始化
-  componentWillMount() {
-
-  }
-
-  // Dom渲染完成
-  componentDidMount() {
-
-  }
   // 组件显示期
   componentDidShow() {
     this.props.loginFlow.asyncUpdateOpenId()
-  }
-
-
-  // 组件销毁期
-  componentWillUnmount() {
-
   }
 
   // 微信授权一键登录
@@ -53,7 +36,7 @@ class GoodsDetail extends Component {
   // 手机号登录
   getUserInfoAuth = (WXEncryptionKey) => {
     this.props.loginFlow.setWXEncryptionKey(WXEncryptionKey)
-    Taro.navigateTo({ url: '/publiPages/phoneLogin/index' })
+    Taro.redirectTo({ url: '/publiPages/login/phoneLogin/index' })
   }
 
   render() {

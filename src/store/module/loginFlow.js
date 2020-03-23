@@ -35,7 +35,7 @@ const LoginFlow = observable({
   },
   //登录
   async asyncAuthorizedLogin(option) {
-    return new Promise(async (resolve) => {
+    return new Promise(async (resolve, reject) => {
       try {
         Taro.showLoading({ mask: true, title: '加载中' })
         const { WXEncryptionKey, openId, sharePram, mobileIn, mobileCode } = option
@@ -56,8 +56,7 @@ const LoginFlow = observable({
         resolve(this.userInfo)
       } catch (err) {
         console.log('登录', err)
-        //登录失败重新刷新session_key
-        await this.asyncUpdateOpenId()
+        reject(err)
       }
     })
   },
