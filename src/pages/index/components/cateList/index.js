@@ -1,5 +1,5 @@
 /* 
-* 店铺信息
+* 商品分类
 */
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
@@ -7,56 +7,38 @@ import { observer, inject } from "@tarojs/mobx"
 
 import './index.scss'
 
-@inject('loginFlow')
+@inject('mainFlow')
 @observer
 
 class CateList extends Component {
-  // 配置
-  config = {
-    navigationBarTitleText: '页面模板',
+
+  state = {
+    curCateIndex: 0
   }
 
-  state = {}
-
-  //初始化
-  componentWillMount() {
-
-  }
-
-  //Dom渲染完成
-  componentDidMount() {
-
-  }
-
-  //组件销毁期
-  componentWillUnmount() {
-
-  }
-
-  //组件显示期
-  componentDidShow() {
-
-  }
-
-  //页面隐藏
-  componentDidHide() {
-
+  changeCate = (index, item) => {
+    console.log(item)
+    this.setState({ curCateIndex: index })
   }
 
   render() {
+    const { cateList } = this.props.mainFlow
+    const { curCateIndex } = this.state
     return (
       <View className='cate-box'>
-        <View className='cate-list-item cur'>123113</View>
-        <View className='cate-list-item'>123113</View>
-        <View className='cate-list-item'>123113</View>
-        <View className='cate-list-item'>123113</View>
-        <View className='cate-list-item'>123113</View>
-        <View className='cate-list-item'>123113</View>
-        <View className='cate-list-item'>123113</View>
-        <View className='cate-list-item'>123113</View>
+        {
+          cateList.map((item, index) => {
+            return <View
+              key={item.categoryShowId}
+              className={index === curCateIndex ? 'cate-list-item cur' : 'cate-list-item'}
+              onClick={this.changeCate.bind(this, index, item)}
+            >{item.name}</View>
+          })
+        }
       </View>
     )
   }
+
 }
 
 export default CateList

@@ -5,7 +5,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { observer, inject } from "@tarojs/mobx"
 
-@inject('counterFlow')
+@inject('loginFlow')
 @observer
 
 class GoodsDetail extends Component {

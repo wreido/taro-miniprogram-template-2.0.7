@@ -28,7 +28,10 @@ export default {
   /**
    * 商品
   */
-  getgoodsList: `${REST}/api/mp/shop/home/getList`,
+  //商品列表
+  getGoodsList: `${REST}/api/mp/shop/home/getList`,
+  //商品分类 广告
+  getCateOrAdvertisement: `${REST}/api/mp/shop/aggregate/home`,
 
   /**
    * 支付流程

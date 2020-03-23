@@ -7,7 +7,7 @@ import CateList from './components/cateList'
 
 import './index.scss'
 
-@inject('loginFlow')
+@inject('loginFlow', 'mainFlow')
 @observer
 
 class Index extends Component {
@@ -17,8 +17,9 @@ class Index extends Component {
   }
 
   //初始化
-  componentWillMount() {
-    if (this.props.loginFlow.userId) this.props.loginFlow.asyncUpdateUserInfo()
+  async componentWillMount() {
+    if (this.props.loginFlow.userId) await this.props.loginFlow.asyncUpdateUserInfo()
+    this.props.mainFlow.asyncGetCateOrAdvertisement()
   }
 
   //Dom渲染完成
@@ -32,21 +33,38 @@ class Index extends Component {
   }
 
   onReachBottom() {
-    console.log(111111111)
+
   }
 
   render() {
+    const { nickName, avatarUrl } = this.props.loginFlow.userInfo.leader
     return (
       <View className='indexWarp'>
         <View className='header'>
           {/* 店铺信息 */}
-          <ShopInfo></ShopInfo>
+          {(nickName || avatarUrl) && <ShopInfo></ShopInfo>}
+          {/* 商品分类 */}
           <CateList></CateList>
         </View>
+        <GoodsList></GoodsList>
+        <GoodsList></GoodsList>
+        <GoodsList></GoodsList>
+        <GoodsList></GoodsList>
+        <GoodsList></GoodsList>
+        <GoodsList></GoodsList>
+        <GoodsList></GoodsList>
+        <GoodsList></GoodsList>
+        <GoodsList></GoodsList>
+        <GoodsList></GoodsList>
+        <GoodsList></GoodsList>
+        <GoodsList></GoodsList>
+        <GoodsList></GoodsList>
+        <GoodsList></GoodsList>
         <GoodsList></GoodsList>
       </View>
     )
   }
+
 }
 
 export default Index 

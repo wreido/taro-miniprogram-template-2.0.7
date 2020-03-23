@@ -8,7 +8,7 @@ import { observer, inject } from "@tarojs/mobx"
 
 import './index.scss'
 
-@inject('counterFlow')
+@inject('loginFlow')
 @observer
 
 class GoodsDetail extends Component {
@@ -20,7 +20,7 @@ class GoodsDetail extends Component {
   //获取商品列表
   getGoodsList = async (type) => {
     try {
-      const { data } = await $fetch($api.getgoodsList, { type })
+      const { data } = await $fetch($api.getGoodsList, { type })
       this.setState(prevState => ({ a: prevState.a.concat(data) }))
     } catch (err) {
       console.error(err)
@@ -33,6 +33,7 @@ class GoodsDetail extends Component {
       <View className='goodsListWarp'>{type}</View>
     )
   }
+
 }
 
 export default GoodsDetail
