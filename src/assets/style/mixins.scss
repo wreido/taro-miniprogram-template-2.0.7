@@ -120,3 +120,14 @@
   height: $height;
   background-color: $color;
 }
+
+// 遮罩透明层
+@mixin mask-modal() {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}

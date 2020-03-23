@@ -35,13 +35,13 @@ const LoginFlow = observable({
   async asyncAuthorizedLogin(option) {
     return new Promise(async (resolve, reject) => {
       try {
-        const { WXEncryptionKey, openId, sharePram, mobileIn, mobileCode } = option
+        const { WXEncryptionKey, openId, shareParm, mobileIn, mobileCode } = option
         let param = {
           appType: enumList.appType,
           openId,
           ivData: WXEncryptionKey.iv,
           encryptedData: WXEncryptionKey.encryptedData,
-          invitationCode: sharePram.invitationCode || '',
+          invitationCode: shareParm.invitationCode || '',
           mobileIn,
           mobileCode
         }

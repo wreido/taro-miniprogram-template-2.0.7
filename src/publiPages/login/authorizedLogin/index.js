@@ -27,7 +27,7 @@ class GoodsDetail extends Component {
     this.props.loginFlow.asyncAuthorizedLogin({
       WXEncryptionKey: this.props.loginFlow.WXEncryptionKey,
       openId: this.props.loginFlow.openId,
-      sharePram: this.props.shareFlow.sharePram
+      shareParm: this.props.shareFlow.shareParm
     }).then(() => {
       Taro.navigateBack()
     })

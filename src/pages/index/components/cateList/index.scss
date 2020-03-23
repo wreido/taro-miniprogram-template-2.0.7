@@ -13,9 +13,6 @@
       white-space: nowrap;
       display: flex;
       align-items: center;
-      &::-webkit-scrollbar {
-        display: none;
-      }
       .cate-list-item {
         position: relative;
         flex-shrink: 0;
