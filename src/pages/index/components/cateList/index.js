@@ -31,21 +31,19 @@ class CateList extends Component {
     const { curCateIndex, initX } = this.state
     return (
       <View className='cate-box'>
-        {
-          cateList.length > 1 && <MovableArea style='height:70rpx;width:100%' className='cate-list' scale-area>
-            <MovableView onClick={this.choiceSort.bind(this)} x={initX} y='0' className='cate-list-inner' style='height:70rpx; width: auto;' direction='horizontal'>
-              {
-                cateList.map((item, index) => {
-                  return <View
-                    key={item.categoryShowId}
-                    className={index === curCateIndex ? 'cate-list-item cur' : 'cate-list-item'}
-                    onClick={this.changeCate.bind(this, index, item)}
-                  >{item.name}</View>
-                })
-              }
-            </MovableView>
-          </MovableArea>
-        }
+        <MovableArea style='height:70rpx;width:100%' className='cate-list' scale-area>
+          <MovableView onClick={this.choiceSort.bind(this)} x={initX} y='0' className='cate-list-inner' style='height:70rpx; width: auto;' direction='horizontal'>
+            {
+              cateList.map((item, index) => {
+                return <View
+                  key={item.categoryShowId}
+                  className={index === curCateIndex ? 'cate-list-item cur' : 'cate-list-item'}
+                  onClick={this.changeCate.bind(this, index, item)}
+                >{item.name}</View>
+              })
+            }
+          </MovableView>
+        </MovableArea>
       </View >
     )
   }
