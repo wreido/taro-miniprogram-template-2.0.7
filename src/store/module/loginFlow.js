@@ -19,10 +19,8 @@ const LoginFlow = observable({
   //获取openId
   async asyncUpdateOpenId() {
     try {
-      Taro.showLoading({ mask: true, title: '加载中' })
       const { code } = await Taro.login()
       const { data } = await $fetch($api.getOpenId, { code, appType: enumList.appType })
-      Taro.hideLoading()
       this.openId = data
       Taro.setStorageSync('openId', this.openId)
     } catch (err) {
@@ -37,7 +35,6 @@ const LoginFlow = observable({
   async asyncAuthorizedLogin(option) {
     return new Promise(async (resolve, reject) => {
       try {
-        Taro.showLoading({ mask: true, title: '加载中' })
         const { WXEncryptionKey, openId, sharePram, mobileIn, mobileCode } = option
         let param = {
           appType: enumList.appType,
@@ -48,8 +45,7 @@ const LoginFlow = observable({
           mobileIn,
           mobileCode
         }
-        const { data } = await $fetch($api.login, param)
-        Taro.hideLoading()
+        const { data } = await $fetch($api.login, param, { loadingOps: { loading: true, loadingText: '登录中...' } })
         this.userId = data
         Taro.setStorageSync('userId', this.userId)
         await this.asyncUpdateUserInfo()
@@ -63,10 +59,8 @@ const LoginFlow = observable({
   //获取用户信息
   async asyncUpdateUserInfo() {
     try {
-      Taro.showLoading({ mask: true, title: '加载中' })
       const user = await $fetch($api.getuserInfo)
       let leader = await $fetch($api.getLeaderInfo, { memberId: user.data.fakeHeadId })
-      Taro.hideLoading()
       this.userInfo = { user: user.data, leader: leader.data, openId: this.openId }
       Taro.setStorageSync('userInfo', this.userInfo)
     } catch (err) {

@@ -27,7 +27,7 @@ function showErrorMsg(message = '活动太火爆，请稍后再试~~') {
  * @returns{Promise}
  */
 
-const $fetch = (path, data = {}, options = { loading: true }) => {
+const $fetch = (path, data = {}, options = { loadingOps: { loading: true, loadingText: '加载中...' } }) => {
 
   if (data.constructor !== Object) return showErrorMsg('参数非法')
   if (options.constructor !== Object) return showErrorMsg('配置非法')
@@ -49,7 +49,7 @@ const $fetch = (path, data = {}, options = { loading: true }) => {
   }
   return new Promise((resolve, reject) => {
 
-    if (options.loading) Taro.showLoading({ title: '加载中..', mask: true })
+    if (options.loadingOps.loading) Taro.showLoading({ title: options.loadingOps.loadingText, mask: true })
 
     Taro.request(ops)
       .then((res) => {
