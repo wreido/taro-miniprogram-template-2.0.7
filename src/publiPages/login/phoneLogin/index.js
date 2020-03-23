@@ -17,7 +17,7 @@ const mobileCodeReg = /^\d{6}$/
 @observer
 
 class PhoneLogin extends Component {
-
+  // 配置
   config = {
     navigationBarTitleText: '登录/注册'
   }
@@ -37,13 +37,15 @@ class PhoneLogin extends Component {
     mobileCodeCheckRes: false
   }
 
-  mobileIn = (e) => {
+  //手机号输入
+  mobileInput = (e) => {
     const { mobileInRule } = this.state
     let checkRes = graceChecker.check({ mobileIn: e.detail.value.replace(/(^\s*)|(\s*$)/g, "") }, mobileInRule);
     this.setState({ mobileIn: e.detail.value, checkRes })
   }
 
-  mobileCode = (e) => {
+  //验证码输入
+  mobileCodeInput = (e) => {
     const { mobileCodeRule } = this.state
     let checkRes = graceChecker.check({ appType: enumList.appType, mobileCode: e.detail.value.replace(/(^\s*)|(\s*$)/g, "") }, mobileCodeRule);
     this.setState({
@@ -53,7 +55,7 @@ class PhoneLogin extends Component {
   }
 
   //获取验证码
-  getCode = debounceStart(async () => {
+  getPhoneCode = debounceStart(async () => {
     const { mobileIn } = this.state
     const timestamp = enumList.currTime
     const sign = md5(`mobile=${mobileIn}&timestamp=${timestamp}&key=${enumList.phoneLoginSignKey}`)
@@ -76,6 +78,7 @@ class PhoneLogin extends Component {
     }
   }, 1000)
 
+  //手机号登录
   phoneLogin = debounceStart(async () => {
     this.props.loginFlow.asyncAuthorizedLogin({
       WXEncryptionKey: this.props.loginFlow.WXEncryptionKey,
@@ -99,15 +102,15 @@ class PhoneLogin extends Component {
         <View className='item'>
           <View className='item-inner'>
             <Text>手机号</Text>
-            <Input placeholder='请输入手机号' placeholderClass='placeholderText' maxLength='11' type='number' onInput={this.mobileIn} value={mobileIn} />
+            <Input placeholder='请输入手机号' placeholderClass='placeholderText' maxLength='11' type='number' onInput={this.mobileInput} value={mobileIn} />
           </View>
         </View>
         <View className='item'>
           <View className='item-inner'>
             <Text>验证码</Text>
-            <Input placeholder='请输入验证码' placeholderClass='placeholderText' maxLength='6' disabled={checkRes ? false : true} type='number' onInput={this.mobileCode} value={mobileCode} />
+            <Input placeholder='请输入验证码' placeholderClass='placeholderText' maxLength='6' disabled={checkRes ? false : true} type='number' onInput={this.mobileCodeInput} value={mobileCode} />
             {!checkRes && <View className='code-btn'>获取验证码</View>}
-            {checkRes && <View className={disabled ? 'code-btn able disabled' : 'code-btn able'} onClick={this.getCode}>{codename}</View>}
+            {checkRes && <View className={disabled ? 'code-btn able disabled' : 'code-btn able'} onClick={this.getPhoneCode}>{codename}</View>}
           </View>
         </View>
         <View className={mobileCodeCheckRes ? 'submit' : 'submit disabled'} onClick={this.phoneLogin}>登录</View>
