@@ -33,7 +33,7 @@ class CateList extends Component {
       <View className='cate-box'>
         {
           cateList.length > 1 && <MovableArea style='height:70rpx;width:100%' className='cate-list' scale-area>
-            <MovableView onClick={this.choiceSort.bind(this)} x={initX} y='0' className='cate-list-inner' style='height:          70rpx; width: auto;' direction='horizontal'>
+            <MovableView onClick={this.choiceSort.bind(this)} x={initX} y='0' className='cate-list-inner' style='height:70rpx; width: auto;' direction='horizontal'>
               {
                 cateList.map((item, index) => {
                   return <View
