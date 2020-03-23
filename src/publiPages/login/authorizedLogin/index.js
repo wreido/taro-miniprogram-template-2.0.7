@@ -41,7 +41,7 @@ class GoodsDetail extends Component {
 
   render() {
     return (
-      <View className='loginWrap'>
+      <View className='authorizedLoginWrap'>
         <View className='head'>
           <View className='ban'>
             <View className='logo'>

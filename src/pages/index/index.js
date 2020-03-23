@@ -1,13 +1,15 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Button, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 import GoodsList from './components/goodsList'
+import ShopInfo from './components/shopInfo'
+import CateList from './components/cateList'
 
 import './index.scss'
 
-
-@inject('counterFlow')
+@inject('loginFlow')
 @observer
+
 class Index extends Component {
 
   config = {
@@ -16,7 +18,7 @@ class Index extends Component {
 
   //初始化
   componentWillMount() {
-
+    if (this.props.loginFlow.userId) this.props.loginFlow.asyncUpdateUserInfo()
   }
 
   //Dom渲染完成
@@ -29,31 +31,19 @@ class Index extends Component {
 
   }
 
-  increment = () => {
-    this.props.counterFlow.increment()
-  }
-
-  decrement = () => {
-    this.props.counterFlow.decrement()
-  }
-
-  incrementAsync = () => {
-    this.props.counterFlow.incrementAsync()
-  }
-
   onReachBottom() {
-    this.props.counterFlow.incrementAsync()
+    console.log(111111111)
   }
 
   render() {
-    const { counterFlow: { counter } } = this.props
     return (
-      <View className='index'>
-        <GoodsList type={counter}></GoodsList>
-        <Button onClick={this.increment}>+</Button>
-        <Button onClick={this.decrement}>-</Button>
-        <Button onClick={this.incrementAsync}>Add Async</Button>
-        <Text>{counter}</Text>
+      <View className='indexWarp'>
+        <View className='header'>
+          {/* 店铺信息 */}
+          <ShopInfo></ShopInfo>
+          <CateList></CateList>
+        </View>
+        <GoodsList></GoodsList>
       </View>
     )
   }

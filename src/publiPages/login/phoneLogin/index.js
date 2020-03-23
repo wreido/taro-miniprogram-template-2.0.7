@@ -98,7 +98,7 @@ class PhoneLogin extends Component {
     const { mobileIn, mobileCode, codename, checkRes, mobileCodeCheckRes, disabled } = this.state
 
     return (
-      <View className='testing'>
+      <View className='phoneLoginWarp'>
         <View className='item'>
           <View className='item-inner'>
             <Text>手机号</Text>

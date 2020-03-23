@@ -6,6 +6,8 @@ import { View } from '@tarojs/components'
 import $fetch, { $api } from '@/api'
 import { observer, inject } from "@tarojs/mobx"
 
+import './index.scss'
+
 @inject('counterFlow')
 @observer
 

@@ -1,0 +1,10 @@
+@import "../../assets/style/mixins.scss";
+
+.indexWarp {
+  background: linear-gradient(to bottom, #fff 300rpx, #f2f2f2 1000rpx, #f2f2f2 100%);
+  min-height: 100vh;
+  .header {
+    position: sticky;
+    top: 0;
+  }
+}
