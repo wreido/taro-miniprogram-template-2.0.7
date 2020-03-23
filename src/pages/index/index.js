@@ -47,20 +47,6 @@ class Index extends Component {
           <CateList></CateList>
         </View>
         <GoodsList></GoodsList>
-        <GoodsList></GoodsList>
-        <GoodsList></GoodsList>
-        <GoodsList></GoodsList>
-        <GoodsList></GoodsList>
-        <GoodsList></GoodsList>
-        <GoodsList></GoodsList>
-        <GoodsList></GoodsList>
-        <GoodsList></GoodsList>
-        <GoodsList></GoodsList>
-        <GoodsList></GoodsList>
-        <GoodsList></GoodsList>
-        <GoodsList></GoodsList>
-        <GoodsList></GoodsList>
-        <GoodsList></GoodsList>
       </View>
     )
   }

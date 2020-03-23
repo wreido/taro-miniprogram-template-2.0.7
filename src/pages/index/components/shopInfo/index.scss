@@ -1,6 +1,7 @@
 @import "../../../../assets/style/mixins.scss";
 
 .shopInfo {
+  position: relative;
   padding: 0 24px;
   display: flex;
   align-items: center;
@@ -8,6 +9,7 @@
   @include wh(100vw, 90px);
   background-color: #fff;
   box-sizing: border-box;
+  z-index: 1;
   image {
     @include wh(54px, 54px);
     border-radius: 30px;
