@@ -25,3 +25,23 @@ https://api-hszy-test.91kuiayigou.cn/seckill-rest-member-info/swagger-ui.html
 https://api-hszy-test.91kuiayigou.cn/seckill-rest-main/swagger-ui.html
 https://api-hszy-test.91kuiayigou.cn/hszy-seckill-rest-third/swagger-ui.html
 ```
+
+## 安装
+
+- 环境依赖
+
+```
+taro 脚手架安装     cnpm install -g @tarojs/cli@2.0.7
+
+依赖安装            npm install
+```
+
+- 启动
+
+```
+开发               npm run dev:weapp
+
+测试               npm run build:weapp:testing
+
+生产               npm run build:weapp
+```
