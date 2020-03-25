@@ -23,6 +23,7 @@ class GoodsDetail extends Component {
 
   // 微信授权一键登录
   getPhoneNumberAuth = async (WXEncryptionKey) => {
+    if (!WXEncryptionKey.detail.encryptedData) return
     this.props.loginFlow.setWXEncryptionKey(WXEncryptionKey)
     this.props.loginFlow.asyncAuthorizedLogin({
       WXEncryptionKey: this.props.loginFlow.WXEncryptionKey,
@@ -35,6 +36,7 @@ class GoodsDetail extends Component {
 
   // 手机号登录
   getUserInfoAuth = (WXEncryptionKey) => {
+    if (!WXEncryptionKey.detail.encryptedData) return
     this.props.loginFlow.setWXEncryptionKey(WXEncryptionKey)
     Taro.redirectTo({ url: '/publiPages/login/phoneLogin/index' })
   }

@@ -10,6 +10,7 @@ const LoginFlow = observable({
   userId: Taro.getStorageSync('userId'),//userId
   openId: Taro.getStorageSync('openId'),//openId
   WXEncryptionKey: {},//微信加密串
+  showGetUserInfoAuthModal: false,
   userInfo: {
     user: {},
     leader: {},
@@ -65,6 +66,22 @@ const LoginFlow = observable({
       Taro.setStorageSync('userInfo', this.userInfo)
     } catch (err) {
       console.error('获取用户信息', err)
+    }
+  },
+  //更新用户头像昵称
+  async asyncUpdateUserInfoAuth(option) {
+    const { WXEncryptionKey, openId } = option
+    try {
+      let param = {
+        appType: enumList.appType,
+        openId,
+        ivData: WXEncryptionKey.iv,
+        encryptedData: WXEncryptionKey.encryptedData
+      }
+      await $fetch($api.updateWechatInfo, param)
+      this.asyncUpdateUserInfo()
+    } catch (err) {
+      console.error('更新用户头像昵称', err)
     }
   }
 })

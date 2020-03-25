@@ -14,7 +14,7 @@ class GoodsDetail extends Component {
     navigationBarTitleText: '分享'
   }
 
-  //组件显示期
+  // 组件显示期
   componentDidShow() {
     this.props.shareFlow.setShareParm(this.$router.params)
   }
