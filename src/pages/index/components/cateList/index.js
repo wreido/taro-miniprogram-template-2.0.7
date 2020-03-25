@@ -1,5 +1,5 @@
 /* 
-* 商品分类
+* 首页 商品分类
 */
 import Taro, { Component } from '@tarojs/taro'
 import { View, MovableArea, MovableView } from '@tarojs/components'

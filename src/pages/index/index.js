@@ -19,7 +19,6 @@ class Index extends Component {
   config = {
     navigationBarTitleText: '首页',
     enablePullDownRefresh: true,
-    backgroundTextStyle: 'dark'
   }
 
   // 初始化

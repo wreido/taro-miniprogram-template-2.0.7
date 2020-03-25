@@ -17,7 +17,8 @@ class App extends Component {
       backgroundTextStyle: "light",
       navigationBarBackgroundColor: "#fff",
       navigationBarTitleText: "Taro小程序模板",
-      navigationBarTextStyle: "black"
+      navigationBarTextStyle: "black",
+      backgroundTextStyle: 'dark'
     },
     //主包
     pages: [

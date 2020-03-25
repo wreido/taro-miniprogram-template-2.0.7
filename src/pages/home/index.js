@@ -1,9 +1,11 @@
 /* 
-* 顶层视图 应用顶层
+* 个人中心
 */
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { observer, inject } from "@tarojs/mobx"
+import { observer, inject } from '@tarojs/mobx'
+import Header from './components/header'
+
 
 import './index.scss'
 
@@ -13,7 +15,11 @@ import './index.scss'
 class GoodsDetail extends Component {
   // 配置
   config = {
-    navigationBarTitleText: '我的',
+    navigationBarTitleText: '个人中心',
+    enablePullDownRefresh: true,
+    navigationStyle: 'custom',
+    navigationBarBackgroundColor: '#fe5656',
+    navigationBarTextStyle: 'white',
   }
 
   state = {}
@@ -38,14 +44,20 @@ class GoodsDetail extends Component {
 
   }
 
+  // 下拉事件
+  async onPullDownRefresh() {
+    Taro.stopPullDownRefresh()
+  }
 
   test = () => {
     Taro.navigateTo({ url: '/publiPages/login/authorizedLogin/index' })
   }
 
   render() {
+
     return (
       <View>
+        <Header></Header>
         <View onClick={this.test}>登录</View>
       </View>
     )

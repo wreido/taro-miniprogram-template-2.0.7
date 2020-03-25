@@ -1,5 +1,5 @@
 /* 
-* 商品列表
+* 首页 商品列表
 */
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'

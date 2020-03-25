@@ -1,0 +1,43 @@
+@import "../../../../assets/style/mixins.scss";
+
+.headerWarp {
+  width: 100vw;
+  background: #ff7113 url(https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/home/info_bg.png) 0 0
+    no-repeat;
+  background-size: 100% 100%;
+  padding: 40px 50px 80px;
+  box-sizing: border-box;
+  .title {
+    @include center;
+    font-size: 36px;
+    color: #ffffff;
+    padding: 40px 0 40px;
+    font-weight: 500;
+  }
+  .userInfo-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    .userInfo {
+      display: flex;
+      align-items: center;
+      .user-img {
+        position: relative;
+        flex-shrink: 0;
+        @include wh(120px, 120px);
+        image {
+          overflow: hidden;
+          border-radius: 50%;
+          @include wh(120px, 120px);
+        }
+      }
+    }
+    .user-code {
+      @include wh(54px, 54px);
+      image {
+        @include wh(54px, 54px);
+      }
+    }
+  }
+}
