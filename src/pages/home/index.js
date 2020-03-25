@@ -4,8 +4,9 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
+import UserInfoAuthModal from '@/components/modal/getUserInfoAuthModal'
+import ShareModal from '@/components/modal/shareModal'
 import Header from './components/header'
-
 
 import './index.scss'
 
@@ -46,19 +47,23 @@ class GoodsDetail extends Component {
 
   // 下拉事件
   async onPullDownRefresh() {
+    // 获取用户信息
+    if (this.props.loginFlow.userId) await this.props.loginFlow.asyncUpdateUserInfo()
     Taro.stopPullDownRefresh()
-  }
-
-  test = () => {
-    Taro.navigateTo({ url: '/publiPages/login/authorizedLogin/index' })
   }
 
   render() {
 
     return (
       <View>
+        {/* 用户信息 */}
         <Header></Header>
-        <View onClick={this.test}>登录</View>
+
+        {/* 分享弹框 */}
+        <ShareModal entry='index'></ShareModal>
+
+        {/* 获取用户昵称头像 */}
+        <UserInfoAuthModal></UserInfoAuthModal>
       </View>
     )
   }

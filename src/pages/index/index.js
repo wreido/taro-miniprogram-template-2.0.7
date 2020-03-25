@@ -95,7 +95,7 @@ class Index extends Component {
         <ShareBtn></ShareBtn>
 
         {/* 分享弹框 */}
-        <ShareModal></ShareModal>
+        <ShareModal entry='index'></ShareModal>
 
         {/* 获取用户昵称头像 */}
         <UserInfoAuthModal></UserInfoAuthModal>

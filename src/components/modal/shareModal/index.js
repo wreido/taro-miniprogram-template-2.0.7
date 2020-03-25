@@ -54,25 +54,19 @@ class ShareModal extends Component {
   }
 
   // 保存海报
-  handleSavePoster = () => {
-    const _that = this
-    Taro.getSetting({
-      success(data) {
-        // 已授权相册
-        if (JSON.stringify(data.authSetting) == '{}' || data.authSetting['scope.writePhotosAlbum'] == void 0 || data.authSetting['scope.writePhotosAlbum']) {
-          Taro.saveImageToPhotosAlbum({
-            filePath: _that.props.shareFlow.posterImgUrl,
-            success() {
-              Taro.showToast({ title: '图片保存成功,快去分享给好友吧', icon: 'none', duration: 1000 })
-              _that.props.shareFlow.showSharePosterModal = false
-            }
-          })
-        } else {
-          // 重新授权
-          Taro.openSetting()
-        }
+  handleSavePoster = async () => {
+    const { authSetting } = await Taro.getSetting()
+    if (authSetting['scope.writePhotosAlbum'] || authSetting['scope.writePhotosAlbum'] == void 0) {
+      try {
+        const posterImgUrlFlag = await Taro.downloadFile({ url: this.props.shareFlow.posterImgUrl })
+        await Taro.saveImageToPhotosAlbum({ filePath: posterImgUrlFlag.tempFilePath })
+        Taro.showToast({ title: '海报保存成功,快去分享给好友吧', icon: 'none', duration: 1000 })
+      } catch (err) {
+        console.error(err)
       }
-    })
+    } else {
+      Taro.openSetting()
+    }
   }
 
   // 关闭分享弹窗
@@ -109,7 +103,7 @@ class ShareModal extends Component {
                 <View className='icon'><Icon></Icon></View>
                 <View className='text'><Text>分享给好友</Text></View>
               </Button>
-              <Button className='item shareQuan' onClick={() => { this.hanldShareQuan() }} title='生成海报分享朋友圈'>
+              <Button className='item shareQuan' onClick={this.hanldShareQuan} title='生成海报分享朋友圈'>
                 <View className='icon'><Icon></Icon></View>
                 <View className='text'><Text>生成图片</Text></View>
               </Button>
