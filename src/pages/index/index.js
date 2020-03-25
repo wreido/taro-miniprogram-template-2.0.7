@@ -76,18 +76,16 @@ class Index extends Component {
   }
 
   render() {
-    const { nickName, avatarUrl } = this.props.loginFlow.userInfo.leader
-    const { cateList } = this.props.mainFlow
 
     return (
       <View className='indexWarp'>
         <View className='header'>
 
           {/* 店铺信息 */}
-          {(nickName || avatarUrl) && <ShopInfo></ShopInfo>}
+          <ShopInfo></ShopInfo>
 
           {/* 商品分类 */}
-          {(cateList.length > 1) && <CateList></CateList>}
+          <CateList></CateList>
 
         </View>
 

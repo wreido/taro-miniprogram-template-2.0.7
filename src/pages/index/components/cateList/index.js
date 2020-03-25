@@ -30,21 +30,25 @@ class CateList extends Component {
     const { cateList } = this.props.mainFlow
     const { curCateIndex, initX } = this.state
     return (
-      <View className='cate-box'>
-        <MovableArea style='height:70rpx;width:100%' className='cate-list' scale-area>
-          <MovableView onClick={this.choiceSort.bind(this)} x={initX} y='0' className='cate-list-inner' style='height:70rpx; width: auto;' direction='horizontal'>
-            {
-              cateList.map((item, index) => {
-                return <View
-                  key={item.categoryShowId}
-                  className={index === curCateIndex ? 'cate-list-item cur' : 'cate-list-item'}
-                  onClick={this.changeCate.bind(this, index, item)}
-                >{item.name}</View>
-              })
-            }
-          </MovableView>
-        </MovableArea>
-      </View >
+      <View className='cateboxWarp'>
+        {
+          (cateList.length > 1) && <View className='cate-box'>
+            <MovableArea style='height:70rpx;width:100%' className='cate-list' scale-area>
+              <MovableView onClick={this.choiceSort.bind(this)} x={initX} y='0' className='cate-list-inner' style='height:70rpx; width: auto;' direction='horizontal'>
+                {
+                  cateList.map((item, index) => {
+                    return <View
+                      key={item.categoryShowId}
+                      className={index === curCateIndex ? 'cate-list-item cur' : 'cate-list-item'}
+                      onClick={this.changeCate.bind(this, index, item)}
+                    >{item.name}</View>
+                  })
+                }
+              </MovableView>
+            </MovableArea>
+          </View >
+        }
+      </View>
     )
   }
 

@@ -10,13 +10,11 @@ import enumList from '@/utils/enumList'
 import md5 from 'js-md5'
 import './index.scss'
 
-const mobilePhoneReg = /^\d{11}$/
-const mobileCodeReg = /^\d{6}$/
-
 @inject('loginFlow', 'shareFlow')
 @observer
 
 class PhoneLogin extends Component {
+
   // 配置
   config = {
     navigationBarTitleText: '登录/注册'
@@ -29,22 +27,22 @@ class PhoneLogin extends Component {
     checkRes: false,
     disabled: false,//获取验证码 禁用状态
     mobileInRule: [
-      { name: 'mobileIn', checkType: 'reg', checkRule: mobilePhoneReg, errorMsg: '请输入您的姓名' },
+      { name: 'mobileIn', checkType: 'reg', checkRule: enumList.regexpList.mobilePhoneReg, errorMsg: '请输入您的姓名' },
     ],
     mobileCodeRule: [
-      { name: 'mobileCode', checkType: 'reg', checkRule: mobileCodeReg, errorMsg: '请输入您的姓名' },
+      { name: 'mobileCode', checkType: 'reg', checkRule: enumList.regexpList.mobileCodeReg, errorMsg: '请输入您的姓名' },
     ],
     mobileCodeCheckRes: false
   }
 
-  //手机号输入
+  // 手机号输入
   mobileInput = (e) => {
     const { mobileInRule } = this.state
     let checkRes = graceChecker.check({ mobileIn: e.detail.value.replace(/(^\s*)|(\s*$)/g, "") }, mobileInRule);
     this.setState({ mobileIn: e.detail.value, checkRes })
   }
 
-  //验证码输入
+  // 验证码输入
   mobileCodeInput = (e) => {
     const { mobileCodeRule } = this.state
     let checkRes = graceChecker.check({ appType: enumList.appType, mobileCode: e.detail.value.replace(/(^\s*)|(\s*$)/g, "") }, mobileCodeRule);
@@ -54,7 +52,7 @@ class PhoneLogin extends Component {
     })
   }
 
-  //获取验证码
+  // 获取验证码
   getPhoneCode = debounceStart(async () => {
     const { mobileIn } = this.state
     const timestamp = enumList.currTime
@@ -78,7 +76,7 @@ class PhoneLogin extends Component {
     }
   }, 1000)
 
-  //手机号登录
+  // 手机号登录
   phoneLogin = debounceStart(async () => {
     this.props.loginFlow.asyncAuthorizedLogin({
       WXEncryptionKey: this.props.loginFlow.WXEncryptionKey,

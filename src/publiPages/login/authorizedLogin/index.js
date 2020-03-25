@@ -11,6 +11,7 @@ import './index.scss'
 @observer
 
 class GoodsDetail extends Component {
+
   // 配置
   config = {
     navigationBarTitleText: '注册/登录'

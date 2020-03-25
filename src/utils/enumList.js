@@ -7,6 +7,10 @@ const enumList = {
   currTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),//当前时间
   sId: utils.randomString(8),//
   appType: 1,//应用类型
+  regexpList: {
+    mobilePhoneReg: /^\d{11}$/,
+    mobileCodeReg: /^\d{6}$/
+  }
 }
 
 export default enumList

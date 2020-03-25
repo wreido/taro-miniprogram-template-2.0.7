@@ -15,9 +15,13 @@ class ShopInfo extends Component {
   render() {
     const { avatarUrl, nickName } = this.props.loginFlow.userInfo.leader
     return (
-      <View className='shopInfo'>
-        <Image mode='aspectFill' src={avatarUrl} />
-        <Text>{nickName}的小店</Text>
+      <View className='shopInfoWarp'>
+        {
+          (nickName || avatarUrl) && <View className='shopInfo'>
+            <Image mode='aspectFill' src={avatarUrl} />
+            <Text>{nickName}的小店</Text>
+          </View>
+        }
       </View>
     )
   }
