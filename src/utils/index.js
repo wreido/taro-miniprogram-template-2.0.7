@@ -119,6 +119,18 @@ export default {
       newArray.push(array.slice(index, index += subGroupLength));
     }
     return newArray;
-  }
+  },
 
+  /**
+  * @Title json转url参数
+  * @param param 
+  */
+  parseParam(param) {
+    let string = ''
+    for (let key in param) {
+      let str = `${key}=${param[key]}&`
+      string = string + str
+    }
+    return string.slice(0, string.length - 1)
+  }
 }

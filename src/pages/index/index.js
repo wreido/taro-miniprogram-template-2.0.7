@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
+import utils from '@/utils'
 import ShareModal from '@/components/modal/shareModal'
 import GoodsList from './components/goodsList'
 import ShopInfo from './components/shopInfo'
@@ -41,11 +42,14 @@ class Index extends Component {
   // 分享给朋友 配置 onShareAppMessage钩子函数必须放父级组件,子组件内无效
   onShareAppMessage() {
     const { loginFlow } = this.props
+    let param = {
+      invitationCode: loginFlow.userId
+    }
     Taro.showTabBar()
 
     return {
       title: `${loginFlow.userInfo.user.wxNickName} 邀你一起吃喝玩乐`,
-      path: `/pages/index/index?inviteMobile=${loginFlow.userInfo.user.mobile}&inviteUserId=${loginFlow.userInfo.user.userId}`,
+      path: `/publiPages/share/index?${utils.parseParam(param)}`,
       imageUrl: 'https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/star_shop/share/wx_share.png',
     }
   }

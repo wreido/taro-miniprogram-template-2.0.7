@@ -7,12 +7,17 @@ const ShareFlow = observable({
   showShareModal: false,// 分享模态框状态
   showSharePosterModal: false,// 是否显示所有生成的海报弹层
   shareParm: {},// 分享参数 
-  // 首页海报
+  //设置分享参数
+  setShareParm(param) {
+    this.shareParm = param
+    console.log(11111, this.shareParm)
+  },
+  //首页海报
   async createHomePoster() {
     this.showSharePosterModal = true
     this.showShareModal = false
   },
-  // 商品海报
+  //商品海报
   async createGoodsPoster() {
     this.showSharePosterModal = true
     this.showShareModal = false

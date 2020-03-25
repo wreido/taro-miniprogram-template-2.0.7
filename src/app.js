@@ -21,8 +21,8 @@ class App extends Component {
     },
     //主包
     pages: [
-      "pages/index/index",
-      "pages/home/index",
+      "pages/index/index",//首页
+      "pages/home/index",//个人中心
       "pages/template"
     ],
     // 小程序分包
@@ -31,9 +31,9 @@ class App extends Component {
       {
         root: 'publiPages',
         pages: [
-          'login/authorizedLogin/index', // 微信授权登陆
-          'login/phoneLogin/index', // 手机号登陆
-
+          'login/authorizedLogin/index',//微信授权登陆
+          'login/phoneLogin/index',//手机号登陆
+          'share/index', //分享
         ]
       }
     ],
