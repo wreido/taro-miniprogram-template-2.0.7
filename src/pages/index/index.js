@@ -71,7 +71,7 @@ class Index extends Component {
     return {
       title: `${loginFlow.userInfo.user.base.nickName} 邀你一起吃喝玩乐`,
       path: `/publiPages/share/index?${utils.parseParam(shareParam)}`,
-      imageUrl: 'https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/star_shop/share/wx_share.png',
+      imageUrl: 'https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/share/shareImg.png',
     }
   }
 
