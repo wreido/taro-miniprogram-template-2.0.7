@@ -89,6 +89,7 @@ const LoginFlow = observable({
       await $fetch($api.updateWechatInfo, param)
       this.asyncUpdateUserInfo()
     } catch (err) {
+      this.asyncUpdateOpenId()
       console.error('更新用户头像昵称', err)
     }
   },
