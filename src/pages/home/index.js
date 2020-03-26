@@ -32,7 +32,7 @@ class GoodsDetail extends Component {
 
   // 组件销毁期
   componentWillUnmount() {
-
+    Bus.off(BusType.refreshHome)
   }
 
   // 数据初始化
@@ -40,8 +40,10 @@ class GoodsDetail extends Component {
     if (!this.props.loginFlow.userId) return
     // 获取用户信息
     this.props.loginFlow.asyncUpdateUserInfo()
-    // 获取余额
+    // 获取我的余额
     this.props.homeFlow.asyncGetMyBalance()
+    //团长待发放余额 预估总收益
+    this.props.homeFlow.asyncGetLeaderAmountTotal()
   }
 
   // 下拉事件

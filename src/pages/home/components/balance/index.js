@@ -14,19 +14,14 @@ import './index.scss'
 class Balance extends Component {
 
   componentDidMount() {
-    if (this.props.loginFlow.userId) this.props.homeFlow.asyncGetMyBalance()
+    if (!this.props.loginFlow.userId) return
+    //获取我的余额
+    this.props.homeFlow.asyncGetMyBalance()
+    //团长待发放余额 预估总收益
+    if (this.props.loginFlow.userInfo.user.roles.hasHead) this.props.homeFlow.asyncGetLeaderAmountTotal()
   }
-  // //我的收益
-  // async myCommissionForMiniProgram() {
-  //   try {
-  //     const { data } = await api.myCommissionForMiniProgram();
-  //     this.setState({ confirmCommissionTotal: data.totalCommission })
-  //   } catch (err) {
-  //     console.error(err)
-  //   }
-  // }
 
-  popTips(e) {
+  popTips = (e) => {
     e.stopPropagation()
     Taro.showModal({
       title: '预估总收益',
@@ -38,7 +33,7 @@ class Balance extends Component {
   }
 
   // 待提现余额的提示
-  popCashWithdrawalTips(e) {
+  popCashWithdrawalTips = (e) => {
     e.stopPropagation()
     Taro.showModal({
       title: '待提现余额',
@@ -50,7 +45,7 @@ class Balance extends Component {
   }
 
   // 待发放余额的提示
-  popProvideTips(e) {
+  popProvideTips = (e) => {
     e.stopPropagation()
     Taro.showModal({
       title: '待发放余额',
@@ -62,7 +57,9 @@ class Balance extends Component {
   }
 
   render() {
+    const { hasHead } = this.props.loginFlow.userInfo.user.roles || {}
     const { balance } = this.props.homeFlow
+    const { allTotalCommission, recommendTeamWaitSendCommission } = this.props.homeFlow.leaderAmountTotal
 
     return (
       <View className='balance'>
@@ -80,27 +77,29 @@ class Balance extends Component {
           </View>
         </View>
 
-        <View className='balance-content'>
-          <View className='balance-content-line'></View>
-          <View className='balance-content-item balance-content-left' onClick={this.provideBalance.bind(this)}>
-            <View className='title'>
-              待发放余额(元)
+        {
+          hasHead && <View className='balance-content'>
+            <View className='balance-content-line'></View>
+            <View className='balance-content-item balance-content-left' onClick={this.provideBalance.bind(this)}>
+              <View className='title'>
+                待发放余额(元)
               <View className='tip' onClick={this.popProvideTips.bind(this)}>
-                <Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/question.png'></Image>
+                  <Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/question.png'></Image>
+                </View>
               </View>
+              <View className='number'>{recommendTeamWaitSendCommission}</View>
             </View>
-            <View className='number'>1</View>
-          </View>
-          <View className='balance-content-item balance-content-right' onClick={this.myCommission.bind(this)}>
-            <View className='title'>
-              预估总收益
+            <View className='balance-content-item balance-content-right' onClick={this.myCommission.bind(this)}>
+              <View className='title'>
+                预估总收益
             <View className='tip' onClick={this.popTips.bind(this)}>
-                <Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/question.png'></Image>
+                  <Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/question.png'></Image>
+                </View>
               </View>
+              <View className='number'>{allTotalCommission}</View>
             </View>
-            <View className='number'>1</View>
           </View>
-        </View>
+        }
       </View>
     )
 

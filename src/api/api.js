@@ -42,7 +42,9 @@ export default {
   /**
   * 个人中心
   */
-  //余额
-  getMyBalance: `${REST}/api/mp/community/account/myBalanceForMiniProgram`
+  //我的余额
+  getMyBalance: `${REST}/api/mp/community/account/myBalanceForMiniProgram`,
+  //团长待发放余额 预估总收益
+  getLeaderAmountTotal: `${HEAD_REST}/api/mp/community/recommendteam/stat/allTotalCommissionAndWaitSendCommission`
 
 }
