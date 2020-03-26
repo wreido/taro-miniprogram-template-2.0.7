@@ -4,18 +4,25 @@
 import Taro from '@tarojs/taro'
 import { observable } from 'mobx'
 import $fetch, { $api } from '@/api'
+import Bus, { BusType } from '@/bus'
 import enumList from '@/utils/enumList'
 
 const LoginFlow = observable({
   userId: Taro.getStorageSync('userId'),//userId
   openId: Taro.getStorageSync('openId'),//openId
   WXEncryptionKey: {},//微信加密串
-  showGetUserInfoAuthModal: false,
+  showGetUserInfoAuthModal: false,//用户昵称头像授权弹框状态
+  orginPage: '',//登录页面来源
   userInfo: {
-    user: {},
-    leader: {},
+    user: {},//用户信息
+    leader: {},//团长信息
     openId: '',
+    userId: '',
     ...Taro.getStorageSync('userInfo')
+  },
+  //设置登录页面来源
+  setOrginPage(orginPage) {
+    this.orginPage = orginPage
   },
   //获取openId
   async asyncUpdateOpenId() {
@@ -49,7 +56,8 @@ const LoginFlow = observable({
         const { data } = await $fetch($api.login, param, { loadingOps: { loading: true, loadingText: '登录中...' } })
         this.userId = data
         Taro.setStorageSync('userId', this.userId)
-        await this.asyncUpdateUserInfo()
+        this.refreshPage()
+        if (!this.orginPage) await this.asyncUpdateUserInfo()
         resolve(this.userInfo)
       } catch (err) {
         console.log('登录', err)
@@ -62,7 +70,7 @@ const LoginFlow = observable({
     try {
       const user = await $fetch($api.getuserInfo)
       let leader = await $fetch($api.getLeaderInfo, { memberId: user.data.fakeHeadId })
-      this.userInfo = { user: user.data, leader: leader.data, openId: this.openId }
+      this.userInfo = { user: user.data, leader: leader.data, openId: this.openId, userId: this.userId }
       Taro.setStorageSync('userInfo', this.userInfo)
     } catch (err) {
       console.error('获取用户信息', err)
@@ -82,6 +90,13 @@ const LoginFlow = observable({
       this.asyncUpdateUserInfo()
     } catch (err) {
       console.error('更新用户头像昵称', err)
+    }
+  },
+  //登录后刷新页面
+  refreshPage() {
+    //刷新首页
+    if (BusType.refreshHome === this.orginPage) {
+      Bus.trigger(BusType.refreshHome)
     }
   }
 })

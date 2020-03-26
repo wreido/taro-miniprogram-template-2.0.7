@@ -6,11 +6,13 @@ import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 import UserInfoAuthModal from '@/components/modal/getUserInfoAuthModal'
 import ShareModal from '@/components/modal/shareModal'
+import Bus, { BusType } from '@/bus'
 import Header from './components/header'
+import Balance from './components/balance'
 
 import './index.scss'
 
-@inject('loginFlow')
+@inject('loginFlow', 'homeFlow')
 @observer
 
 class GoodsDetail extends Component {
@@ -23,41 +25,42 @@ class GoodsDetail extends Component {
     navigationBarTextStyle: 'white',
   }
 
-  state = {}
-
-  //初始化
-  componentWillMount() {
-
-  }
-
   // Dom渲染完成
   componentDidMount() {
-
+    Bus.on(BusType.refreshHome, () => { this.init() })
   }
-  // 组件显示期
-  componentDidShow() {
-
-  }
-
 
   // 组件销毁期
   componentWillUnmount() {
 
   }
 
+  // 数据初始化
+  init = () => {
+    if (!this.props.loginFlow.userId) return
+    // 获取用户信息
+    this.props.loginFlow.asyncUpdateUserInfo()
+    // 获取余额
+    this.props.homeFlow.asyncGetMyBalance()
+  }
+
   // 下拉事件
   async onPullDownRefresh() {
-    // 获取用户信息
-    if (this.props.loginFlow.userId) await this.props.loginFlow.asyncUpdateUserInfo()
+    this.init()
     Taro.stopPullDownRefresh()
   }
 
   render() {
 
     return (
-      <View>
+      <View className='homeWrap'>
         {/* 用户信息 */}
         <Header></Header>
+
+        <View className='section'>
+          {/* 余额 */}
+          <Balance></Balance>
+        </View>
 
         {/* 分享弹框 */}
         <ShareModal entry='index'></ShareModal>

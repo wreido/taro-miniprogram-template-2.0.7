@@ -10,7 +10,7 @@ export const HSZY_SECKILL_REST_THIRD = '/hszy-seckill-rest-third'
 
 export default {
   /**
-   * 登录 注册 用户
+  * 登录 注册 用户
   */
   //登录
   login: `${REST}/api/mp/community/weixin/none/login`,
@@ -26,7 +26,7 @@ export default {
   updateWechatInfo: `${REST}/api/mp/community/member/updateWechatInfo`,
 
   /**
-   * 商品
+  * 商品
   */
   //商品列表
   getGoodsList: `${REST}/api/mp/shop/home/getList`,
@@ -34,9 +34,15 @@ export default {
   getCateOrAdvertisement: `${REST}/api/mp/shop/aggregate/home`,
 
   /**
-   * 支付流程
+  * 支付流程
   */
   //获取支付凭证
-  getPayment: `${SHOPPING_REST}/api/mp/shop/order/pay/weixin/getPaymentInfo`
+  getPayment: `${SHOPPING_REST}/api/mp/shop/order/pay/weixin/getPaymentInfo`,
+
+  /**
+  * 个人中心
+  */
+  //余额
+  getMyBalance: `${REST}/api/mp/community/account/myBalanceForMiniProgram`
 
 }

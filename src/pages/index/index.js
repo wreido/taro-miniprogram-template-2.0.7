@@ -22,10 +22,10 @@ class Index extends Component {
   }
 
   // 初始化
-  componentWillMount() {
+  async componentWillMount() {
     // 隐藏右上角分享
     Taro.hideShareMenu()
-    // 数据初始化
+
     this.init()
   }
 
@@ -41,7 +41,6 @@ class Index extends Component {
 
   // 下拉事件
   async onPullDownRefresh() {
-    // 数据初始化
     await this.init()
     Taro.stopPullDownRefresh()
   }

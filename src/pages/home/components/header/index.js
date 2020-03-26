@@ -1,5 +1,5 @@
 /* 
-* 个人中心 -- header
+* 个人中心 header
 */
 import Taro, { Component } from '@tarojs/taro'
 import { View, Image, Button, Text } from '@tarojs/components'
@@ -14,6 +14,8 @@ class Header extends Component {
 
   //切换登录
   switchingAccounts = () => {
+    //设置登录页面来源
+    this.props.loginFlow.setOrginPage('home')
     Taro.navigateTo({ url: '/publiPages/login/authorizedLogin/index' })
   }
 
@@ -30,6 +32,8 @@ class Header extends Component {
 
   //去登录
   toLogin = () => {
+    //设置登录页面来源
+    this.props.loginFlow.setOrginPage('home')
     Taro.navigateTo({ url: '/publiPages/login/authorizedLogin/index' })
   }
 

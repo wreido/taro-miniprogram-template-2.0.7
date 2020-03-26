@@ -3,8 +3,8 @@ import { observable } from 'mobx'
 import $fetch, { $api } from '@/api'
 
 const MainFlow = observable({
-  cateList: [],
-  advertisement: {},
+  cateList: [],//商品分类
+  advertisement: {},//广告
   //获取 商品分类 广告
   async asyncGetCateOrAdvertisement() {
     try {
@@ -13,7 +13,7 @@ const MainFlow = observable({
     } catch (err) {
       console.error('获取 商品分类 广告', err)
     }
-  }
+  },
 })
 
 
