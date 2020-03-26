@@ -57,6 +57,8 @@ class Index extends Component {
     if (this.props.loginFlow.userId) await this.props.loginFlow.asyncUpdateUserInfo()
     // 获取商品分类、广告
     this.props.mainFlow.asyncGetCateOrAdvertisement()
+    // 商品列表
+    this.props.mainFlow.asyncGetGoodsList()
   }
 
   // 分享给朋友 配置 onShareAppMessage钩子函数必须放父级组件,子组件内无效
@@ -76,6 +78,9 @@ class Index extends Component {
 
   render() {
 
+    const { currCate } = this.props.mainFlow
+
+
     return (
       <View className='indexWarp'>
         <View className='header'>
@@ -89,7 +94,7 @@ class Index extends Component {
         </View>
 
         {/* 焦点图 */}
-        <Banner></Banner>
+        {currCate.categoryShowId === 0 && <Banner></Banner>}
 
         {/* 商品列表 */}
         <GoodsList></GoodsList>

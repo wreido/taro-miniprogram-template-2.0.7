@@ -50,9 +50,10 @@ const LoginFlow = observable({
           ivData: WXEncryptionKey.iv,
           encryptedData: WXEncryptionKey.encryptedData,
           invitationCode: shareParm.invitationCode || '',
-          mobileIn,
-          mobileCode
         }
+        if (mobileIn) param['mobileIn'] = mobileIn
+        if (mobileCode) param['mobileCode'] = mobileCode
+
         const { data } = await $fetch($api.login, param, { loadingOps: { loading: true, loadingText: '登录中...' } })
         this.userId = data
         Taro.setStorageSync('userId', this.userId)

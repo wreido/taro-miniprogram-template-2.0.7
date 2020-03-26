@@ -57,51 +57,54 @@ class Balance extends Component {
   }
 
   render() {
+    const { userId } = this.props.loginFlow
     const { hasHead } = this.props.loginFlow.userInfo.user.roles || {}
     const { balance } = this.props.homeFlow
     const { allTotalCommission, recommendTeamWaitSendCommission } = this.props.homeFlow.leaderAmountTotal
 
-    return (
-      <View className='balance'>
-        {/* 收益弹窗 */}
-        <View className='balance-header' >
-          <View className='balance-header-left' onClick={this.balanceRecord.bind(this)}>
-            <View className='title'>待提现余额(元)</View>
-            <View className='tip' onClick={this.popCashWithdrawalTips.bind(this)}>
-              <Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/icon_question_jin.png'></Image>
+    if (userId) {
+      return (
+        <View className='balance'>
+          {/* 收益弹窗 */}
+          <View className='balance-header' >
+            <View className='balance-header-left' onClick={this.balanceRecord.bind(this)}>
+              <View className='title'>待提现余额(元)</View>
+              <View className='tip' onClick={this.popCashWithdrawalTips.bind(this)}>
+                <Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/icon_question_jin.png'></Image>
+              </View>
+              <View className='number'>{balance}</View>
             </View>
-            <View className='number'>{balance}</View>
+            <View className='balance-header-right' onClick={this.cashWithdrawal.bind(this)}>
+              立即提现
+            </View>
           </View>
-          <View className='balance-header-right' onClick={this.cashWithdrawal.bind(this)}>
-            立即提现
-          </View>
-        </View>
 
-        {
-          hasHead && <View className='balance-content'>
-            <View className='balance-content-line'></View>
-            <View className='balance-content-item balance-content-left' onClick={this.provideBalance.bind(this)}>
-              <View className='title'>
-                待发放余额(元)
-              <View className='tip' onClick={this.popProvideTips.bind(this)}>
-                  <Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/question.png'></Image>
+          {
+            hasHead && <View className='balance-content'>
+              <View className='balance-content-line'></View>
+              <View className='balance-content-item balance-content-left'>
+                <View className='title'>
+                  待发放余额(元)
+                <View className='tip' onClick={this.popProvideTips.bind(this)}>
+                    <Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/question.png'></Image>
+                  </View>
                 </View>
+                <View className='number'>{recommendTeamWaitSendCommission}</View>
               </View>
-              <View className='number'>{recommendTeamWaitSendCommission}</View>
-            </View>
-            <View className='balance-content-item balance-content-right' onClick={this.myCommission.bind(this)}>
-              <View className='title'>
-                预估总收益
-            <View className='tip' onClick={this.popTips.bind(this)}>
-                  <Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/question.png'></Image>
+              <View className='balance-content-item balance-content-right'>
+                <View className='title'>
+                  预估总收益
+              <View className='tip' onClick={this.popTips.bind(this)}>
+                    <Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/question.png'></Image>
+                  </View>
                 </View>
+                <View className='number'>{allTotalCommission}</View>
               </View>
-              <View className='number'>{allTotalCommission}</View>
             </View>
-          </View>
-        }
-      </View>
-    )
+          }
+        </View>
+      )
+    }
 
   }
 

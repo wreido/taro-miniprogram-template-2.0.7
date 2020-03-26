@@ -18,7 +18,7 @@ class CateList extends Component {
   }
 
   changeCate = (index, item) => {
-    console.log(item)
+    this.props.mainFlow.setCurrCate(item)
     this.setState({ curCateIndex: index })
   }
 

@@ -17,7 +17,9 @@
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: $row;
+  /* autoprefixer: off */
   -webkit-box-orient: vertical;
+  /* autoprefixer: on */
 }
 
 // 1px极细线

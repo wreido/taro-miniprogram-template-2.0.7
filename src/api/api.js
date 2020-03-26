@@ -29,7 +29,7 @@ export default {
   * 商品
   */
   //商品列表
-  getGoodsList: `${REST}/api/mp/shop/home/getList`,
+  getGoodsList: `${SEKILL_REST_MAIN}/main/shop/getGoodList`,
   //商品分类 广告
   getCateOrAdvertisement: `${REST}/api/mp/shop/aggregate/home`,
 
