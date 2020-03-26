@@ -3,7 +3,7 @@
 */
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { observer, inject } from "@tarojs/mobx"
+import { observer, inject } from '@tarojs/mobx'
 
 @inject('loginFlow')
 @observer

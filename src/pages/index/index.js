@@ -7,6 +7,7 @@ import UserInfoAuthModal from '@/components/modal/getUserInfoAuthModal'
 import GoodsList from './components/goodsList'
 import ShopInfo from './components/shopInfo'
 import CateList from './components/cateList'
+import Banner from './components/banner'
 import ShareBtn from './components/shareBtn'
 
 import './index.scss'
@@ -86,6 +87,9 @@ class Index extends Component {
           <CateList></CateList>
 
         </View>
+
+        {/* 焦点图 */}
+        <Banner></Banner>
 
         {/* 商品列表 */}
         <GoodsList></GoodsList>

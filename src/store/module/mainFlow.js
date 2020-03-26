@@ -9,7 +9,8 @@ const MainFlow = observable({
   async asyncGetCateOrAdvertisement() {
     try {
       const { data } = await $fetch($api.getCateOrAdvertisement)
-      this.cateList = [{ categoryShowId: 0, name: '全部' }].concat(data.categoryShowList)
+      if (data.adsHomePageGroup) this.advertisement = data.adsHomePageGroup
+      if (data.categoryShowList) this.cateList = [{ categoryShowId: 0, name: '全部' }].concat(data.categoryShowList)
     } catch (err) {
       console.error('获取 商品分类 广告', err)
     }

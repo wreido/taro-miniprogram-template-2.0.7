@@ -4,7 +4,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import $fetch, { $api } from '@/api'
-import { observer, inject } from "@tarojs/mobx"
+import { observer, inject } from '@tarojs/mobx'
 
 import './index.scss'
 

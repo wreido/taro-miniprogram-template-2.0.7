@@ -3,7 +3,7 @@
  */
 import Taro, { Component } from '@tarojs/taro'
 import { View, Image, Button } from '@tarojs/components';
-import { inject, observer } from "@tarojs/mobx"
+import { inject, observer } from '@tarojs/mobx'
 import './index.scss'
 
 @inject('loginFlow')

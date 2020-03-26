@@ -1,5 +1,5 @@
 import Taro, { Component } from "@tarojs/taro";
-import { Provider } from "@tarojs/mobx";
+import { Provider } from '@tarojs/mobx';
 import Index from "@/pages/index/index";
 import store from "@/store";
 import "./app.scss";

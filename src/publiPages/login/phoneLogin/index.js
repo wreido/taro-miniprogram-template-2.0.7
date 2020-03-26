@@ -3,7 +3,7 @@
 */
 import Taro, { Component } from '@tarojs/taro'
 import { View, Input, Text } from '@tarojs/components'
-import { observer, inject } from "@tarojs/mobx"
+import { observer, inject } from '@tarojs/mobx'
 import $fetch, { $api } from '@/api'
 import { graceChecker, debounceStart } from 'utilscore' //表单校验
 import enumList from '@/utils/enumList'
