@@ -57,7 +57,7 @@ const LoginFlow = observable({
         const { data } = await $fetch($api.login, param, { loadingOps: { loading: true, loadingText: '登录中...' } })
         this.userId = data
         Taro.setStorageSync('userId', this.userId)
-        this.refreshPage()
+        if (this.orginPage) this.refreshPage()
         if (!this.orginPage) await this.asyncUpdateUserInfo()
         resolve(this.userInfo)
       } catch (err) {

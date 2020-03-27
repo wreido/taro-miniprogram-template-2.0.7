@@ -15,7 +15,7 @@ class Header extends Component {
   //切换登录
   switchingAccounts = () => {
     //设置登录页面来源
-    this.props.loginFlow.setOrginPage('home')
+    this.props.loginFlow.setOrginPage('refreshHome')
     Taro.navigateTo({ url: '/publiPages/login/authorizedLogin/index' })
   }
 
