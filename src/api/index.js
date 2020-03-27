@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro'
 import enumList from '@/utils/enumList'
-import md5 from 'js-md5';
-import store from "@/store";
+import md5 from 'js-md5'
+import store from '@/store'
 import { API_ORIGIN } from './baseUrl'
 
 // 添加拦截器

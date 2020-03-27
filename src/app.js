@@ -1,7 +1,7 @@
 import Taro, { Component } from "@tarojs/taro";
 import { Provider } from '@tarojs/mobx';
 import Index from "@/pages/index/index";
-import store from "@/store";
+import store from '@/store';
 import "./app.scss";
 
 // 如果需要在 h5 环境中开启 React Devtools
@@ -12,7 +12,6 @@ import "./app.scss";
 
 class App extends Component {
   config = {
-
     window: {
       backgroundTextStyle: "light",
       navigationBarBackgroundColor: "#fff",
@@ -74,7 +73,7 @@ class App extends Component {
     // 异步请求超时时间
     networkTimeout: {
       request: 5000
-    },
+    }
   };
 
   componentDidMount() { }
