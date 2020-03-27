@@ -4,7 +4,9 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
+import $fetch, { $api } from '@/api'
 import utils from '@/utils'
+import Banner from './components/banner'
 
 import './index.scss'
 
@@ -17,16 +19,23 @@ class GoodsDetail extends Component {
     navigationBarTitleText: '商品详情',
   }
 
-  state = {}
-
-  //初始化
-  componentWillMount() {
-
+  state = {
+    goodsDetail: {}//商品详情
   }
 
   //Dom渲染完成
   componentDidMount() {
+    this.getGoodsDetail()
+  }
 
+  //商品详情
+  getGoodsDetail = async () => {
+    try {
+      const { data } = await $fetch($api.getGoodsDetail, { goodId: this.$router.params.goodsId })
+      this.setState({ goodsDetail: data })
+    } catch (err) {
+      console.log('商品详情', err)
+    }
   }
 
   // 分享给朋友 配置 onShareAppMessage钩子函数必须放父级组件,子组件内无效
@@ -46,8 +55,14 @@ class GoodsDetail extends Component {
   }
 
   render() {
+    const { goodsDetail } = this.state
+
     return (
-      <View>3131</View>
+      <View className='goodsDetailWarp'>
+        <View className='header'>
+          <Banner bannerList={goodsDetail.detailImages}></Banner>
+        </View>
+      </View>
     )
   }
 }

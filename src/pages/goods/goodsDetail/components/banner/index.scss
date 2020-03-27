@@ -1,0 +1,26 @@
+@import "../../../../../assets/style/mixins.scss";
+
+.bannerWarp {
+  position: relative;
+  overflow: hidden;
+  .banner {
+    @include wh(750px, 650px);
+    .banner-item {
+      position: relative;
+      @include wh(750px, 650px);
+      image {
+        @include wh(100%, 100%);
+      }
+    }
+  }
+  .indicatorDots {
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: 24px;
+    color: #ffffff;
+    padding: 5px 20px;
+    border-radius: 20px;
+  }
+}

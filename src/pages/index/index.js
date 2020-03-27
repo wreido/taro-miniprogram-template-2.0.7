@@ -31,11 +31,6 @@ class Index extends Component {
     this.init()
   }
 
-  // Dom渲染完成
-  componentDidMount() {
-    Bus.on(BusType.refreshIndex, () => { this.init() })
-  }
-
   // 组件销毁期
   componentWillUnmount() {
     Bus.off(BusType.refreshIndex)

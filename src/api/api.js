@@ -24,12 +24,16 @@ export default {
   getLeaderInfo: `${SEKILL_REST_MEMBER_INFO}/api/mp/community/member/leaderInfo`,
   //更新用户头像昵称
   updateWechatInfo: `${REST}/api/mp/community/member/updateWechatInfo`,
+  //绑定团长
+  bindLeader: `${HEAD_REST}/api/mp/community/member/bindFakeLeaderByMemberId`,
 
   /**
   * 商品
   */
   //商品列表
   getGoodsList: `${SEKILL_REST_MAIN}/main/shop/getGoodList`,
+  //商品详情
+  getGoodsDetail: `${SEKILL_REST_MAIN}/main/shop/getGoodDetail`,
   //商品分类 广告
   getCateOrAdvertisement: `${REST}/api/mp/shop/aggregate/home`,
 

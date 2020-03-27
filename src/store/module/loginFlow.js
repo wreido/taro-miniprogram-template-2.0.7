@@ -57,6 +57,7 @@ const LoginFlow = observable({
         const { data } = await $fetch($api.login, param, { loadingOps: { loading: true, loadingText: '登录中...' } })
         this.userId = data
         Taro.setStorageSync('userId', this.userId)
+        this.asyncBindLeader(shareParm)
         if (this.orginPage) this.refreshPage()
         if (!this.orginPage) await this.asyncUpdateUserInfo()
         resolve(this.userInfo)
@@ -92,6 +93,17 @@ const LoginFlow = observable({
     } catch (err) {
       this.asyncUpdateOpenId()
       console.error('更新用户头像昵称', err)
+    }
+  },
+  //绑定团长
+  async asyncBindLeader(shareParm) {
+    try {
+      let param = {
+        shareMemberId: shareParm.invitationCode
+      }
+      await $fetch($api.bindLeader, param)
+    } catch (err) {
+      console.error('绑定团长', err)
     }
   },
   //登录后刷新页面
