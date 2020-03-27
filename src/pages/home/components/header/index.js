@@ -33,7 +33,7 @@ class Header extends Component {
   //去登录
   toLogin = () => {
     //设置登录页面来源
-    this.props.loginFlow.setOrginPage('home')
+    this.props.loginFlow.setOrginPage('refreshHome')
     Taro.navigateTo({ url: '/publiPages/login/authorizedLogin/index' })
   }
 

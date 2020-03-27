@@ -14,7 +14,7 @@ class ShareBtn extends Component {
   // 点击事件
   handleClick = () => {
     //设置登录页面来源
-    this.props.loginFlow.setOrginPage('index')
+    this.props.loginFlow.setOrginPage('refreshIndex')
     // 登陆可分享
     if (!this.props.loginFlow.userId) return Taro.navigateTo({ url: '/publiPages/login/authorizedLogin/index' })
     this.props.shareFlow.showShareModal = true
