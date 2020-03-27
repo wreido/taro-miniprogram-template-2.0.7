@@ -14,9 +14,10 @@ const ShareFlow = observable({
   // 设置分享参数
   setShareParm(param) {
     this.shareParm = param
-    console.log(11111, this.shareParm, utils.parseParam(this.shareParm))
+    console.log('分享参数', this.shareParm, utils.parseParam(this.shareParm))
     //路由重定向
     if (this.shareParm.redirectTo) Taro.redirectTo({ url: `${this.shareParm.redirectTo}?${utils.parseParam(this.shareParm)}` })
+    if (this.shareParm.reLaunch) Taro.reLaunch({ url: `${this.shareParm.reLaunch}?${utils.parseParam(this.shareParm)}` })
   },
   // 首页海报
   async createHomePoster() {

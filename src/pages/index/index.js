@@ -66,7 +66,8 @@ class Index extends Component {
   onShareAppMessage() {
     const { loginFlow } = this.props
     let shareParam = {
-      invitationCode: loginFlow.userId
+      invitationCode: loginFlow.userId,
+      reLaunch: '/pages/index/index'
     }
     Taro.showTabBar()
 

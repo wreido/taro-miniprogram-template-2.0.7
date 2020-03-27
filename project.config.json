@@ -21,5 +21,37 @@
 	"compileType": "miniprogram",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
-	"condition": {}
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "分享",
+					"pathName": "publiPages/share/index",
+					"query": "invitationCode=8de8b685dfe04311a60190c9e106d09d&reLaunch=/pages/index/index",
+					"scene": null
+				}
+			]
+		}
+	}
 }

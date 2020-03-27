@@ -4,7 +4,6 @@ import md5 from 'js-md5';
 import store from "@/store";
 import { API_ORIGIN } from './baseUrl'
 
-
 // 添加拦截器
 // Taro.addInterceptor(Taro.interceptors.logInterceptor)
 
@@ -54,7 +53,7 @@ const $fetch = (path, data = {}, options = { loadingOps: { loading: true, loadin
     Taro.request(ops)
       .then((res) => {
         Taro.hideLoading()
-        console.warn(ops, res)
+        if (process.env.CONFIG_ENV !== 'production') console.warn(ops, res)
         if (res.data.status !== 200) {
           showErrorMsg(res.data.msg)
           reject(res || {})
