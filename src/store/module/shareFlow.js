@@ -2,7 +2,9 @@
 * 分享流程  影响流程：登录、下单、分享
 */
 import Taro from '@tarojs/taro'
-import { observable } from "mobx";
+import { observable } from 'mobx'
+import utils from '@/utils'
+
 
 const ShareFlow = observable({
   showShareModal: false,// 分享模态框状态
@@ -12,7 +14,9 @@ const ShareFlow = observable({
   // 设置分享参数
   setShareParm(param) {
     this.shareParm = param
-    console.log(11111, this.shareParm)
+    console.log(11111, this.shareParm, utils.parseParam(this.shareParm))
+    //路由重定向
+    if (this.shareParm.redirectTo) Taro.redirectTo({ url: `${this.shareParm.redirectTo}?${utils.parseParam(this.shareParm)}` })
   },
   // 首页海报
   async createHomePoster() {

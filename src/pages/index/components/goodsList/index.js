@@ -22,7 +22,7 @@ class GoodsDetail extends Component {
   }
 
   toGoodsDetail = (goodsId) => {
-    Taro.navigateTo({ url: `/pages/goods/goodsDetail/index?${goodsId}` })
+    Taro.navigateTo({ url: `/pages/goods/goodsDetail/index?goodsId=${goodsId}` })
   }
 
   render() {
