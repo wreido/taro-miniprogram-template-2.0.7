@@ -27,7 +27,7 @@ class Index extends Component {
   async componentWillMount() {
     // 隐藏右上角分享
     Taro.hideShareMenu()
-
+    Bus.on(BusType.refreshIndex, () => { this.init() })
     this.init()
   }
 
@@ -40,7 +40,6 @@ class Index extends Component {
   componentWillUnmount() {
     Bus.off(BusType.refreshIndex)
   }
-
 
   // 下拉事件
   async onPullDownRefresh() {
@@ -79,9 +78,7 @@ class Index extends Component {
   }
 
   render() {
-
     const { currCate } = this.props.mainFlow
-
 
     return (
       <View className='indexWarp'>

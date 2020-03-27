@@ -5,6 +5,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Image, Text } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 import ossProcess from '@/utils/ossProcess'
+import utils from '@/utils'
 
 import './index.scss'
 
@@ -21,7 +22,7 @@ class GoodsDetail extends Component {
   }
 
   toGoodsDetail = (goodsId) => {
-    console.log(goodsId)
+    Taro.navigateTo({ url: `/pages/goods/goodsDetail/index?${goodsId}` })
   }
 
   render() {
@@ -35,6 +36,12 @@ class GoodsDetail extends Component {
             return <View className='goods' key={goods.goodId} onClick={this.toGoodsDetail.bind(this, goods.goodId)}>
               <View className='goods-img'>
                 <Image mode='aspectFill' src={ossProcess(goods.mainSquareImage, 'resizeFill', { width: 702, height: 396 })} />
+
+                {goods.status === 0 && goods.tagShowVOList.length > 0 && <View className='label tag tagShowVOList'>{goods.tagShowVOList[0].name}</View>}
+                {goods.status === 1 && <View className='label tag ahead'>{utils.timeStr(utils.formatDate(goods.goodsSalesBeginTime, 'MM-DD HH:mm'))}</View>}
+                {(goods.status === -2 || goods.status == 2) && <View className='label looting'><Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/index/state_sy_lootall.png'></Image></View>}
+                {(goods.status === -1) && <View className='label end'><Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/index/state_sy_end.png'></Image></View>}
+
               </View>
               <View className='goods-info'>
                 <View className='goods-name'>{goods.title}</View>

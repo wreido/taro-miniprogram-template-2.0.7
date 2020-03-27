@@ -5,13 +5,15 @@ import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
+import './index.scss'
+
 @inject('loginFlow')
 @observer
 
-class Template extends Component {
+class GoodsDetail extends Component {
   // 配置
   config = {
-    navigationBarTitleText: '页面模板',
+    navigationBarTitleText: '商品详情',
   }
 
   state = {}
@@ -26,26 +28,11 @@ class Template extends Component {
 
   }
 
-  //组件销毁期
-  componentWillUnmount() {
-
-  }
-
-  //组件显示期
-  componentDidShow() {
-
-  }
-
-  //页面隐藏
-  componentDidHide() {
-
-  }
-
   render() {
     return (
-      <View></View>
+      <View>3131</View>
     )
   }
 }
 
-export default Template
+export default GoodsDetail

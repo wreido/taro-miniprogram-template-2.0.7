@@ -17,7 +17,7 @@ class GetUserInfoAuthModal extends Component {
   // 组件显示期
   componentDidShow() {
     const { loginFlow } = this.props
-    if (loginFlow.userId && !loginFlow.userInfo.user.base.nickName) {
+    if (loginFlow.userId && loginFlow.userInfo.user && loginFlow.userInfo.user.base && !loginFlow.userInfo.user.base.nickName) {
       loginFlow.showGetUserInfoAuthModal = true
     }
   }

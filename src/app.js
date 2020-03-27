@@ -24,7 +24,8 @@ class App extends Component {
     pages: [
       "pages/index/index",//首页
       "pages/home/index",//个人中心
-      "pages/template"
+      "pages/goods/goodsDetail/index",//商品详情
+      "pages/template",//模板
     ],
     // 小程序分包
     subpackages: [
