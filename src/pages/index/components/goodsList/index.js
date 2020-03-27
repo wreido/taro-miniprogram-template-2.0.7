@@ -66,7 +66,7 @@ class GoodsDetail extends Component {
                     {/* 是团长 且 不是运营商 则显示团长收益 */}
                     {hasHead && goods.operatorCommission == 0 && goods.justCommission > 0 && <View className='tag'>收益￥{Number(goods.justCommission)}</View>}
 
-                    {goods.restrictQty === 0 && <View className='tag'>限购{goods.restrictQty}份</View>}
+                    {goods.restrictQty > 0 && <View className='tag'>限购{goods.restrictQty}份</View>}
                   </View>
                 </View>
                 <View className={goods.status === 0 ? 'pay' : 'pay disabled'} onClick={this.toPay.bind(this, goods)}>立即购买</View>

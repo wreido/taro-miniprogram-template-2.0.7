@@ -9,7 +9,9 @@
 
 const type = Object.create(null)
 
-// test
+// 个人中心
 type.refreshHome = 'home'
+// 首页
+type.refreshIndex = 'index'
 
 export default type

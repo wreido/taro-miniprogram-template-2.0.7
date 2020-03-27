@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
+import Bus, { BusType } from '@/bus'
 import utils from '@/utils'
 import ShareModal from '@/components/modal/shareModal'
 import UserInfoAuthModal from '@/components/modal/getUserInfoAuthModal'
@@ -32,13 +33,14 @@ class Index extends Component {
 
   // Dom渲染完成
   componentDidMount() {
-
+    Bus.on(BusType.refreshIndex, () => { this.init() })
   }
 
-  // 组件显示期
-  componentDidShow() {
-
+  // 组件销毁期
+  componentWillUnmount() {
+    Bus.off(BusType.refreshIndex)
   }
+
 
   // 下拉事件
   async onPullDownRefresh() {

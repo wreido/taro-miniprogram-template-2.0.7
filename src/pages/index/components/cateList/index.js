@@ -19,6 +19,7 @@ class CateList extends Component {
 
   changeCate = (index, item) => {
     this.props.mainFlow.setCurrCate(item)
+    Taro.pageScrollTo({ scrollTop: 0 })
     this.setState({ curCateIndex: index })
   }
 

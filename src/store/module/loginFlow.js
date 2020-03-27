@@ -96,9 +96,15 @@ const LoginFlow = observable({
   },
   //登录后刷新页面
   refreshPage() {
-    //刷新首页
-    if (BusType.refreshHome === this.orginPage) {
-      Bus.trigger(BusType.refreshHome)
+    switch (this.orginPage) {
+      //刷新个人中心
+      case BusType.refreshHome:
+        Bus.trigger(BusType.refreshHome)
+        break
+      //刷新首页
+      case BusType.refreshIndex:
+        Bus.trigger(BusType.refreshIndex)
+        break
     }
   }
 })
