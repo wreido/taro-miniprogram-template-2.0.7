@@ -50,6 +50,34 @@
 					"pathName": "publiPages/share/index",
 					"query": "invitationCode=8de8b685dfe04311a60190c9e106d09d&reLaunch=/pages/index/index",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "微信授权登录",
+					"pathName": "publiPages/login/authorizedLogin/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "手机号登录",
+					"pathName": "publiPages/login/phoneLogin/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人中心",
+					"pathName": "pages/home/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "商品详情",
+					"pathName": "pages/goods/goodsDetail/index",
+					"query": "goodsId=1242627195727200258",
+					"scene": null
 				}
 			]
 		}
