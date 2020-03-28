@@ -76,7 +76,12 @@ class App extends Component {
     }
   };
 
-  componentDidMount() { }
+  componentDidMount() {
+    //非从分享链路进来 默认绑定上级运营商
+    if (store.loginFlow.userId && JSON.stringify(this.$router.params.query) === '{}') {
+      store.loginFlow.asyncBindLeader()
+    }
+  }
 
   componentDidShow() { }
 

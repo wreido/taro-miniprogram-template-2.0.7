@@ -96,7 +96,7 @@ const LoginFlow = observable({
     }
   },
   //绑定团长
-  async asyncBindLeader(shareParm) {
+  async asyncBindLeader(shareParm = {}) {
     try {
       let param = {
         shareMemberId: shareParm.invitationCode

@@ -8,7 +8,7 @@ import { observer, inject } from '@tarojs/mobx'
 @inject('shareFlow')
 @observer
 
-class GoodsDetail extends Component {
+class Share extends Component {
 
   // 组件显示期
   componentDidShow() {
@@ -22,4 +22,4 @@ class GoodsDetail extends Component {
   }
 }
 
-export default GoodsDetail
+export default Share
