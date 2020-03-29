@@ -165,5 +165,35 @@ export default {
       string = string + str
     }
     return string.slice(0, string.length - 1)
-  }
+  },
+
+  /**
+  * @Title 距离当前时间间隔
+  * @param time  时间戳
+  * @param type  显示类型
+  */
+  timeSpan(time, currTimestamp, type) {
+    // let currTimestamp = Date.parse(new Date())
+    //计算出天数
+    let days = Math.floor((time - currTimestamp) / (24 * 3600 * 1000))
+    //计算出小时数
+    let leave1 = (time - currTimestamp) % (24 * 3600 * 1000)    //计算天数后剩余的毫秒数
+    let hours = Math.floor(leave1 / (3600 * 1000))
+    //计算相差分钟数
+    let leave2 = leave1 % (3600 * 1000)        //计算小时数后剩余的毫秒数
+    let minutes = Math.floor(leave2 / (60 * 1000))
+    //计算相差秒数
+    let leave3 = leave2 % (60 * 1000)      //计算分钟数后剩余的毫秒数
+    let seconds = Math.round(leave3 / 1000)
+    switch (type) {
+      case 'd':
+        return days
+      case 'h':
+        return hours
+      case 'm':
+        return minutes
+      case 's':
+        return seconds
+    }
+  },
 }

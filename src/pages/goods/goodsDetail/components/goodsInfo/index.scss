@@ -1,0 +1,111 @@
+@import "../../../../../assets/style/mixins.scss";
+
+.goodsInfoWarp {
+  .price {
+    display: flex;
+    @include wh(100vw, 100px);
+    background: url(https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zhiyou-miniprogram/goods_details.png);
+    background-size: 100%;
+    .price-info {
+      display: flex;
+      @include wh(522px, 100px);
+      opacity: 0.95;
+      align-items: center;
+      padding-left: 32px;
+      box-sizing: border-box;
+      .price-info-l {
+        color: #ffffff;
+        font-size: 68px;
+        font-weight: bold;
+        text {
+          font-size: 35px;
+        }
+      }
+      .price-info-r {
+        padding-left: 20px;
+        .item {
+          color: rgb(255, 255, 255);
+          font-size: 20px;
+          &:nth-child(1) {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: line-through;
+          }
+        }
+      }
+    }
+    .price-time {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      color: #ef3233;
+      font-size: 24px;
+      font-weight: 400;
+    }
+  }
+  .goods-info {
+    position: relative;
+    background-color: #fff;
+    padding: 24px;
+    box-sizing: border-box;
+    min-height: 151px;
+    .goods-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      box-sizing: border-box;
+      .share-btn {
+        flex-shrink: 0;
+        @include wh(115px, 115px);
+        background: url("https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/share/goodsShareBtn.png") 0 0
+          no-repeat;
+        background-size: contain;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      .goods-name {
+        flex: 1;
+        font-size: 30px;
+        color: #333333;
+        font-weight: bold;
+        @include multi-ellipsis;
+      }
+    }
+    .goods-labelled {
+      display: inline-block;
+      color: #ff7113;
+      border: 1px solid rgba(239, 50, 51, 0.5);
+      border-radius: 4px;
+      font-size: 20px;
+      padding: 0px 7px;
+      margin: 10px;
+      margin-left: 0px;
+      &.parcelGood {
+        color: #333;
+        background: linear-gradient(135deg, rgba(255, 225, 2, 1), rgba(255, 207, 3, 1));
+        padding: 3px 7px;
+        border: none;
+        border-radius: 5px;
+      }
+    }
+    .goods-tip {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .goods-tip-text {
+        font-size: 24px;
+        color: #999999;
+      }
+      .header-name-box {
+        width: 50px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        image {
+          @include wh(26px, 26px);
+        }
+      }
+    }
+  }
+}

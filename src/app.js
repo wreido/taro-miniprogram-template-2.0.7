@@ -1,8 +1,8 @@
-import Taro, { Component } from "@tarojs/taro";
-import { Provider } from '@tarojs/mobx';
-import Index from "@/pages/index/index";
-import store from '@/store';
-import "./app.scss";
+import Taro, { Component } from '@tarojs/taro'
+import { Provider } from '@tarojs/mobx'
+import Index from '@/pages/index/index'
+import store from '@/store'
+import '@/assets/style/taro-theme.scss'
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -74,7 +74,7 @@ class App extends Component {
     networkTimeout: {
       request: 5000
     }
-  };
+  }
 
   componentDidMount() {
     //非从分享链路进来 默认绑定上级运营商
@@ -96,7 +96,7 @@ class App extends Component {
       <Provider store={store}>
         <Index />
       </Provider>
-    );
+    )
   }
 }
 

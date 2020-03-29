@@ -7,6 +7,7 @@ import { observer, inject } from '@tarojs/mobx'
 import $fetch, { $api } from '@/api'
 import utils from '@/utils'
 import Banner from './components/banner'
+import GoodsInfo from './components/goodsInfo'
 
 import './index.scss'
 
@@ -32,7 +33,14 @@ class GoodsDetail extends Component {
   getGoodsDetail = async () => {
     try {
       const { data } = await $fetch($api.getGoodsDetail, { goodId: this.$router.params.goodsId })
-      this.setState({ goodsDetail: data })
+      let startTime = data.goodsSalesBeginTime - data.currentTime > 0 ? data.goodsSalesBeginTime : data.goodsSalesEndTime
+      const time = {
+        day: utils.timeSpan(startTime, data.currentTime, 'd'),
+        hours: utils.timeSpan(startTime, data.currentTime, 'h'),
+        minutes: utils.timeSpan(startTime, data.currentTime, 'm'),
+        seconds: utils.timeSpan(startTime, data.currentTime, 's')
+      }
+      this.setState({ goodsDetail: { ...data, time, goodsStatus: data.goodsSalesBeginTime - data.currentTime > 0 } })
     } catch (err) {
       console.log('商品详情', err)
     }
@@ -62,6 +70,9 @@ class GoodsDetail extends Component {
         <View className='header'>
           <Banner bannerList={goodsDetail.detailImages}></Banner>
         </View>
+
+        <GoodsInfo goodsDetail={goodsDetail}></GoodsInfo>
+
       </View>
     )
   }
