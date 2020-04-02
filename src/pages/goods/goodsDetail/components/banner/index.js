@@ -7,6 +7,7 @@ import { observer, inject } from '@tarojs/mobx'
 import ossProcess from '@/utils/ossProcess'
 
 import './index.scss'
+import utils from '../../../../../utils'
 
 @inject('mainFlow')
 @observer
@@ -34,9 +35,9 @@ class Banner extends Component {
       <View className='bannerWarp'>
         <Swiper className='banner' indicatorColor='#EF3233' indicatorActiveColor='#FFFFFF' circular onChange={this.changeBanner.bind(this)}>
           {
-            bannerList.map((img) => {
+            bannerList.map((img, index) => {
               return <SwiperItem key={img}>
-                <View className='banner-item'>
+                <View className='banner-item' onClick={() => { utils.previewImage(bannerList, index) }}>
                   <Image mode='widthFix' src={ossProcess(img, 'resizeFill', { width: 750, height: 750 })} />
                 </View>
               </SwiperItem>

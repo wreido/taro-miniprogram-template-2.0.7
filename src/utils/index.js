@@ -196,4 +196,16 @@ export default {
         return seconds
     }
   },
+
+  /**
+  * @Title 点击查看大图
+  * @param imgList  图片数组
+  * @param index  当前图片下标
+  */
+  previewImage(imgList, index) {
+    Taro.previewImage({
+      current: index,
+      urls: imgList,
+    })
+  }
 }

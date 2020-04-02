@@ -12,19 +12,24 @@ import './index.scss'
 
 class ShopInfo extends Component {
 
+  toIndex = () => {
+    Taro.reLaunch({ url: '/pages/index/index' })
+  }
+
   render() {
     const { avatarUrl, nickName } = this.props.loginFlow.userInfo.leader
     const { userId } = this.props.loginFlow
 
     if (userId) {
       return (
-        <View className='shopInfoWarp'>
+        <View className='shopInfoWarp' onClick={this.toIndex}>
           {
             (nickName || avatarUrl) && <View className='shopInfo'>
               <Image mode='aspectFill' src={avatarUrl} />
               <Text>{nickName}的小店</Text>
             </View>
           }
+          <View className='to-shop'>进入店铺</View>
         </View>
       )
     }

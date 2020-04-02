@@ -13,5 +13,7 @@ const type = Object.create(null)
 type.refreshHome = 'home'
 // 首页
 type.refreshIndex = 'index'
+// 商品详情
+type.refreshGoodsDetail = 'goodsDetail'
 
 export default type

@@ -43,8 +43,8 @@ class Index extends Component {
   }
 
   // 触底事件
-  onReachBottom() {
-
+  onReachBottom = () => {
+    this.props.mainFlow.asyncGetGoodsList()
   }
 
   // 数据初始化
@@ -54,6 +54,7 @@ class Index extends Component {
     // 获取商品分类、广告
     this.props.mainFlow.asyncGetCateOrAdvertisement()
     // 商品列表
+    this.props.mainFlow.currGoodsListPage = 1
     this.props.mainFlow.asyncGetGoodsList()
   }
 

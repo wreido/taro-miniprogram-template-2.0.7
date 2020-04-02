@@ -45,7 +45,7 @@ class ShareModal extends Component {
         shareFlow.createHomePoster()
         break;
       case 'goods': // 商品 必须传商品ID、商品图片
-        shareFlow.createGoodsPoster({ goodsId: extraData.spuId, goodImgs: extraData.goodImgs[0], tppposter: extraData.tppposter })
+        shareFlow.createGoodsPoster(extraData)
         break;
     }
 
@@ -71,8 +71,9 @@ class ShareModal extends Component {
 
   // 关闭分享弹窗
   closeShareModal = () => {
-    this.props.shareFlow.showShareModal = false
-    Taro.showTabBar()
+    const { entry, shareFlow } = this.props
+    shareFlow.showShareModal = false
+    if (entry === 'index') Taro.showTabBar()
   }
 
   // 关闭分享海报弹窗
