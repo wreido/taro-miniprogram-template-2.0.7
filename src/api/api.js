@@ -36,6 +36,8 @@ export default {
   getGoodsDetail: `${SEKILL_REST_MAIN}/main/shop/getGoodDetail`,
   //商品分类 广告
   getCateOrAdvertisement: `${REST}/api/mp/shop/aggregate/home`,
+  //产品富文本介绍
+  getGoodsDetailHtml: `${REST}/api/common/oss/get`,
 
   /**
   * 支付流程

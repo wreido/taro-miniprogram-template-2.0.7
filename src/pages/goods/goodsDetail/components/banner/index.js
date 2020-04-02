@@ -5,9 +5,8 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Swiper, SwiperItem, Image } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 import ossProcess from '@/utils/ossProcess'
-
+import utils from '@/utils'
 import './index.scss'
-import utils from '../../../../../utils'
 
 @inject('mainFlow')
 @observer
@@ -35,9 +34,9 @@ class Banner extends Component {
       <View className='bannerWarp'>
         <Swiper className='banner' indicatorColor='#EF3233' indicatorActiveColor='#FFFFFF' circular onChange={this.changeBanner.bind(this)}>
           {
-            bannerList.map((img, index) => {
+            bannerList.map((img) => {
               return <SwiperItem key={img}>
-                <View className='banner-item' onClick={() => { utils.previewImage(bannerList, index) }}>
+                <View className='banner-item' onClick={() => { utils.previewImage(bannerList, img) }}>
                   <Image mode='widthFix' src={ossProcess(img, 'resizeFill', { width: 750, height: 750 })} />
                 </View>
               </SwiperItem>

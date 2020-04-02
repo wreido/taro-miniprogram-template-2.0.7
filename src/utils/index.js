@@ -200,11 +200,11 @@ export default {
   /**
   * @Title 点击查看大图
   * @param imgList  图片数组
-  * @param index  当前图片下标
+  * @param currImg  当前图片
   */
-  previewImage(imgList, index) {
+  previewImage(imgList, currImg) {
     Taro.previewImage({
-      current: index,
+      current: currImg,
       urls: imgList,
     })
   }

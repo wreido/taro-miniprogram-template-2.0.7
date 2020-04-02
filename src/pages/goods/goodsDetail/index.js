@@ -26,11 +26,14 @@ class GoodsDetail extends Component {
   }
 
   state = {
-    goodsDetail: {}//商品详情
+    goodsDetail: {},//商品详情
+    goodsDetailHtml: ''
   }
 
   //Dom渲染完成
   componentDidMount() {
+    // 隐藏右上角分享
+    Taro.hideShareMenu()
     this.getGoodsDetail()
     Bus.on(BusType.refreshGoodsDetail, () => { this.init() })
 
@@ -66,15 +69,27 @@ class GoodsDetail extends Component {
         minutes: utils.timeSpan(startTime, data.currentTime, 'm'),
         seconds: utils.timeSpan(startTime, data.currentTime, 's')
       }
+      if (data.goodsDetailOss) this.getGoodsDetailHtml(data.goodsDetailOss)
       this.setState({ goodsDetail: { ...data, time, goodsStatus: data.goodsSalesBeginTime - data.currentTime > 0 } })
     } catch (err) {
       console.log('商品详情', err)
     }
   }
 
+  getGoodsDetailHtml = async (goodsDetailOss) => {
+    try {
+      const { data } = await $fetch($api.getGoodsDetailHtml, { html: goodsDetailOss })
+      this.setState({ goodsDetailHtml: data })
+    } catch (err) {
+      console.log('商品详情', err)
+    }
+  }
+
+
   // 分享给朋友 配置 onShareAppMessage钩子函数必须放父级组件,子组件内无效
   onShareAppMessage() {
     const { loginFlow } = this.props
+    const { goodsDetail } = this.state
     let shareParam = {
       invitationCode: loginFlow.userId,
       goodsId: this.$router.params.goodsId,
@@ -84,12 +99,12 @@ class GoodsDetail extends Component {
     return {
       title: `${loginFlow.userInfo.user.base.nickName} 邀你一起吃喝玩乐`,
       path: `/publiPages/share/index?${utils.parseParam(shareParam)}`,
-      imageUrl: 'https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/share/shareImg.png',
+      imageUrl: `${goodsDetail.detailImages[0]}`,
     }
   }
 
   render() {
-    const { goodsDetail } = this.state
+    const { goodsDetail, goodsDetailHtml } = this.state
 
     return (
       <View className='goodsDetailWarp'>
@@ -105,6 +120,8 @@ class GoodsDetail extends Component {
 
         {/* 店铺信息 */}
         <ShopInfo></ShopInfo>
+
+        <rich-text space='nbsp' nodes={goodsDetailHtml}></rich-text>
 
         {/* 分享弹框 */}
         <ShareModal entry='goods'></ShareModal>
