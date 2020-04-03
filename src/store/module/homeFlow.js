@@ -1,4 +1,6 @@
-import Taro from '@tarojs/taro'
+/* 
+* 个人中心
+*/
 import { observable } from 'mobx'
 import $fetch, { $api } from '@/api'
 

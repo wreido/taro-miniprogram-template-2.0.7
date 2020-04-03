@@ -8,10 +8,14 @@ import $fetch, { $api } from '@/api'
 import utils from '@/utils'
 import Bus, { BusType } from '@/bus'
 import ShareModal from '@/components/modal/shareModal'
+import UserInfoAuthModal from '@/components/modal/getUserInfoAuthModal'
 import Banner from './components/banner'
 import Profit from './components/profit'
 import GoodsInfo from './components/goodsInfo'
 import ShopInfo from './components/shopInfo'
+import GoodsIntroduce from './components/goodsIntroduce'
+import UseRule from './components/useRule'
+import PayBox from './components/payBox'
 
 import './index.scss'
 
@@ -76,6 +80,7 @@ class GoodsDetail extends Component {
     }
   }
 
+  //产品介绍
   getGoodsDetailHtml = async (goodsDetailOss) => {
     try {
       const { data } = await $fetch($api.getGoodsDetailHtml, { html: goodsDetailOss })
@@ -84,7 +89,6 @@ class GoodsDetail extends Component {
       console.log('商品详情', err)
     }
   }
-
 
   // 分享给朋友 配置 onShareAppMessage钩子函数必须放父级组件,子组件内无效
   onShareAppMessage() {
@@ -110,7 +114,7 @@ class GoodsDetail extends Component {
       <View className='goodsDetailWarp'>
         <View className='header'>
           {/* 商品图 */}
-          <Banner bannerList={goodsDetail.detailImages}></Banner>
+          <Banner goodsDetail={goodsDetail}></Banner>
           {/* 收益 */}
           <Profit goodsDetail={goodsDetail}></Profit>
         </View>
@@ -118,13 +122,23 @@ class GoodsDetail extends Component {
         {/* 商品信息 */}
         <GoodsInfo goodsDetail={goodsDetail}></GoodsInfo>
 
+        {/* 购买规则 */}
+        <UseRule goodsDetail={goodsDetail}></UseRule>
+
         {/* 店铺信息 */}
         <ShopInfo></ShopInfo>
 
-        <rich-text space='nbsp' nodes={goodsDetailHtml}></rich-text>
+        {/* 产品介绍 */}
+        <GoodsIntroduce goodsDetailHtml={goodsDetailHtml}></GoodsIntroduce>
+
+        {/* 去付款 */}
+        <PayBox goodsDetail={goodsDetail}></PayBox>
 
         {/* 分享弹框 */}
         <ShareModal entry='goods'></ShareModal>
+
+        {/* 获取用户昵称头像 */}
+        <UserInfoAuthModal></UserInfoAuthModal>
 
       </View>
     )

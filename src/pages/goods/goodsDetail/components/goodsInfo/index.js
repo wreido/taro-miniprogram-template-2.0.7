@@ -8,7 +8,7 @@ import { observer, inject } from '@tarojs/mobx'
 
 import './index.scss'
 
-@inject('loginFlow', 'mainFlow', 'shareFlow')
+@inject('loginFlow', 'shareFlow')
 @observer
 
 class GoodsInfo extends Component {

@@ -3,18 +3,16 @@
 */
 import Taro, { Component } from '@tarojs/taro'
 import { View, Swiper, SwiperItem, Image } from '@tarojs/components'
-import { observer, inject } from '@tarojs/mobx'
 import ossProcess from '@/utils/ossProcess'
 import utils from '@/utils'
 import './index.scss'
 
-@inject('mainFlow')
-@observer
+const playIconImage = require('@/assets/images/video_play.png')
 
 class Banner extends Component {
 
   static defaultProps = {
-    bannerList: []
+    goodsDetail: {}
   }
 
   state = {
@@ -26,24 +24,30 @@ class Banner extends Component {
     this.setState({ indicatorDotsIndex: currBanner.detail.current + 1 })
   }
 
+  // 播放视频
+  playVideo = (e) => {
+    e.stopPropagation()
+  }
+
   render() {
-    const { bannerList } = this.props
+    const { goodsDetail } = this.props
     const { indicatorDotsIndex } = this.state
 
     return (
       <View className='bannerWarp'>
         <Swiper className='banner' indicatorColor='#EF3233' indicatorActiveColor='#FFFFFF' circular onChange={this.changeBanner.bind(this)}>
           {
-            bannerList.map((img) => {
+            goodsDetail.detailImages && goodsDetail.detailImages.map((img, index) => {
               return <SwiperItem key={img}>
-                <View className='banner-item' onClick={() => { utils.previewImage(bannerList, img) }}>
+                <View className='banner-item' onClick={() => { utils.previewImage(goodsDetail.detailImages, img) }}>
                   <Image mode='widthFix' src={ossProcess(img, 'resizeFill', { width: 750, height: 750 })} />
+                  {(index === 0 && goodsDetail.videos && goodsDetail.videos.length !== 0) && <View className='video-btn' onClick={this.playVideo}><Image src={playIconImage} /></View>}
                 </View>
               </SwiperItem>
             })
           }
         </Swiper>
-        <View className='indicatorDots'>{indicatorDotsIndex}/{bannerList.length}</View>
+        <View className='indicatorDots'>{indicatorDotsIndex}/{goodsDetail.detailImages.length}</View>
       </View>
     )
 

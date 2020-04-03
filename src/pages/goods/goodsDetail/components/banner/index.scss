@@ -11,6 +11,17 @@
       image {
         @include wh(100%, 100%);
       }
+      .video-btn {
+        @include wh(100px, 100px);
+        position: absolute;
+        top: 275px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #ffffff;
+        image {
+          @include wh(100px, 100px);
+        }
+      }
     }
   }
   .indicatorDots {

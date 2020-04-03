@@ -9,7 +9,6 @@
   @include wh(100vw, 150px);
   background-color: #fff;
   box-sizing: border-box;
-  z-index: 1;
   margin-top: 20px;
   .shopInfo {
     @include center;

@@ -1,5 +1,5 @@
 /* 
-* 分享流程  影响流程：登录、下单、分享
+* 分享
 */
 import Taro from '@tarojs/taro'
 import { observable } from 'mobx'
