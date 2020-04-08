@@ -35,7 +35,7 @@ class GoodsInfo extends Component {
           <View className='price-info'>
             <View className='price-info-hd'>
               <View className='price-range'>
-                <Text>￥</Text>{goodsDetail.priceRange}
+                <Text className='icon'>￥</Text>{goodsDetail.priceRange}
               </View>
               <View className='original-price'>￥{goodsDetail.originalPrice}</View>
             </View>

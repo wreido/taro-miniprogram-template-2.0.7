@@ -48,7 +48,7 @@ class VideoModle extends Component {
       return (
         <View className='videoWarp'>
           <Video className='video' id='video' src={goodsDetail.videos[0]} autoplay show-center-play-btn={false} initial-time='0' onEnded={this.playEnd.bind(this)}></Video>
-          <View className='close' onClick={this.playClose.bind(this)}><Image src={closeIconImage} /></View>
+          <View className='close' onClick={this.playClose.bind(this)}><Image className='close-play' src={closeIconImage} /></View>
         </View>
       )
     }

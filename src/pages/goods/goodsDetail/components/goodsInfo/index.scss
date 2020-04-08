@@ -18,7 +18,7 @@
           color: #ffffff;
           font-size: 46px;
           font-weight: bold;
-          text {
+          .icon {
             font-size: 35px;
           }
         }
@@ -107,15 +107,6 @@
       .goods-tip-text {
         font-size: 24px;
         color: #999999;
-      }
-      .header-name-box {
-        width: 50px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-end;
-        image {
-          @include wh(26px, 26px);
-        }
       }
     }
   }

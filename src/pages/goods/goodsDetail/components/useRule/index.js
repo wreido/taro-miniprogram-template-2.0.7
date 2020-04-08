@@ -39,7 +39,7 @@ class UseRule extends Component {
           <Text className='title'>配送</Text>
           <View className='content'>
             <View>不发售地区</View>
-            <Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/question.png'></Image>
+            <Image className='icon' mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/question.png'></Image>
           </View>
         </View>
       </View>

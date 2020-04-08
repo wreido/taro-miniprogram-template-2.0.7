@@ -12,11 +12,11 @@
   margin-top: 20px;
   .shopInfo {
     @include center;
-    image {
+    .user-image {
       @include wh(90px, 90px);
       border-radius: 45px;
     }
-    text {
+    .user-name {
       font-size: 28px;
       font-weight: bold;
       margin-left: 10px;

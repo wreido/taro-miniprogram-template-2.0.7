@@ -8,7 +8,7 @@
     .banner-item {
       position: relative;
       @include wh(750px, 650px);
-      image {
+      .banner-image {
         @include wh(100%, 100%);
       }
       .video-btn {
@@ -18,7 +18,7 @@
         left: 50%;
         transform: translateX(-50%);
         color: #ffffff;
-        image {
+        .video-btn {
           @include wh(100px, 100px);
         }
       }

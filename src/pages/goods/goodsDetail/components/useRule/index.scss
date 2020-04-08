@@ -28,7 +28,7 @@
     }
     &.delivery {
       .content {
-        image {
+        .icon {
           display: block;
           @include wh(26px, 26px);
           margin-bottom: 2px;

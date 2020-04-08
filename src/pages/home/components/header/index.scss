@@ -2,8 +2,9 @@
 
 .headerWarp {
   width: 100vw;
-  background: #ff7113 url(https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/home/info_bg.png) 0 0
-    no-repeat;
+  background: #ff7113
+    url(https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/home/info_bg.png)
+    0 0 no-repeat;
   background-size: 100% 100%;
   padding: 40px 50px 108px;
   box-sizing: border-box;
@@ -26,7 +27,7 @@
         position: relative;
         flex-shrink: 0;
         @include wh(120px, 120px);
-        image {
+        .image {
           overflow: hidden;
           border-radius: 50%;
           @include wh(120px, 120px);
@@ -43,7 +44,7 @@
           width: 380px;
           font-size: 34px;
           overflow: hidden;
-          text {
+          .user-name {
             @include single-ellipsis;
             width: auto;
             padding-right: 10px;
@@ -55,8 +56,8 @@
             color: #fff;
             border-radius: 50%;
             padding: 0;
-            background: url(https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/index/shuaxin.png) 0 0
-              no-repeat;
+            background: url(https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/index/shuaxin.png)
+              0 0 no-repeat;
             background-size: 100%;
             margin: 0;
           }
@@ -83,7 +84,7 @@
     }
     .user-code {
       @include wh(54px, 54px);
-      image {
+      .share-btn {
         @include wh(54px, 54px);
       }
     }

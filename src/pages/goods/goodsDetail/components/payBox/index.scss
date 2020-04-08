@@ -11,7 +11,7 @@
     @include center;
     flex-shrink: 0;
     @include wh(150px, 100px);
-    image {
+    .home-icon {
       @include wh(50px, 50px);
     }
   }

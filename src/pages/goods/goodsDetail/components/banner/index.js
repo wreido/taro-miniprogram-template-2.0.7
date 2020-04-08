@@ -45,8 +45,8 @@ class Banner extends Component {
             goodsDetail.detailImages && goodsDetail.detailImages.map((img, index) => {
               return <SwiperItem key={img}>
                 <View className='banner-item' onClick={() => { utils.previewImage(goodsDetail.detailImages, img) }}>
-                  <Image mode='aspectFill' src={ossProcess(img, 'resizeFill', { width: 750, height: 750 })} />
-                  {(index === 0 && goodsDetail.videos && goodsDetail.videos.length !== 0) && <View className='video-btn' onClick={this.playVideo}><Image src={playIconImage} /></View>}
+                  <Image className='banner-image' mode='aspectFill' src={ossProcess(img, 'resizeFill', { width: 750, height: 750 })} />
+                  {(index === 0 && goodsDetail.videos && goodsDetail.videos.length !== 0) && <View className='video-btn' onClick={this.playVideo}><Image className='video-img' src={playIconImage} /></View>}
                 </View>
               </SwiperItem>
             })

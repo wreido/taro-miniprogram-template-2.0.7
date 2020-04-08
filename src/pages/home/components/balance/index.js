@@ -70,7 +70,7 @@ class Balance extends Component {
             <View className='balance-header-left' onClick={this.balanceRecord.bind(this)}>
               <View className='title'>待提现余额(元)</View>
               <View className='tip' onClick={this.popCashWithdrawalTips.bind(this)}>
-                <Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/icon_question_jin.png'></Image>
+                <Image className='tip-icon' mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/icon_question_jin.png'></Image>
               </View>
               <View className='number'>{balance}</View>
             </View>
@@ -86,7 +86,7 @@ class Balance extends Component {
                 <View className='title'>
                   待发放余额(元)
                 <View className='tip' onClick={this.popProvideTips.bind(this)}>
-                    <Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/question.png'></Image>
+                    <Image className='tip-icon' mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/question.png'></Image>
                   </View>
                 </View>
                 <View className='number'>{recommendTeamWaitSendCommission}</View>
@@ -95,7 +95,7 @@ class Balance extends Component {
                 <View className='title'>
                   预估总收益
               <View className='tip' onClick={this.popTips.bind(this)}>
-                    <Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/question.png'></Image>
+                    <Image className='tip-icon' mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/shopping/question.png'></Image>
                   </View>
                 </View>
                 <View className='number'>{allTotalCommission}</View>

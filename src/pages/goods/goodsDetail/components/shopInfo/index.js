@@ -25,8 +25,8 @@ class ShopInfo extends Component {
         <View className='shopInfoWarp' onClick={this.toIndex}>
           {
             (nickName || avatarUrl) && <View className='shopInfo'>
-              <Image mode='aspectFill' src={avatarUrl} />
-              <Text>{nickName}的小店</Text>
+              <Image className='user-image' mode='aspectFill' src={avatarUrl} />
+              <Text className='user-name'>{nickName}的小店</Text>
             </View>
           }
           <View className='to-shop'>进入店铺</View>

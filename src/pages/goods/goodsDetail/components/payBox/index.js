@@ -26,7 +26,7 @@ class PayBoxWarp extends Component {
     return (
       <View className={!isIphoneX ? 'payBoxWarp' : 'payBoxWarp isIphoneX'}>
         <View className='to-home'>
-          <Image src='../../../../../assets/images/tabBarIcon/home_off.png' />
+          <Image className='home-icon' src='../../../../../assets/images/tabBarIcon/home_off.png' />
         </View>
 
         {goodsDetail.status == 0 && <View className='to-pay'>立即购买</View>}

@@ -57,12 +57,12 @@ class Header extends Component {
             <View className='userInfo'>
               {/* 用户头像 */}
               <View className='user-img'>
-                <Image mode='aspectFill' src={avatarUrl} />
+                <Image className='image' mode='aspectFill' src={avatarUrl} />
               </View>
               {/* 用户昵称 用户手机号 */}
               <View className='user'>
                 <View className='name'>
-                  <Text>{nickName}</Text>
+                  <Text className='user-name'>{nickName}</Text>
                   <Button className='btn' open-type='getUserInfo' onGetUserInfo={this.getUserInfoAuth}></Button>
                 </View>
                 <View className='phone'>
@@ -76,7 +76,7 @@ class Header extends Component {
 
             {/* 生成海报 */}
             <View className='user-code' onClick={this.createHomePoster}>
-              <Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/home/grzx_code.png' />
+              <Image className='share-btn' mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/home/grzx_code.png' />
             </View>
           </View>
         </View>

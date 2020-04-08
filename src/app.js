@@ -70,7 +70,7 @@ class App extends Component {
       }
     },
     // 是否开启调试模式
-    debug: true,
+    debug: false,
     // 异步请求超时时间
     networkTimeout: {
       request: 5000
