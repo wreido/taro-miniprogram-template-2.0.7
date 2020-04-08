@@ -19,7 +19,10 @@ page {
     -webkit-font-smoothing: subpixel-antialiased;
     font-weight: 400;
   }
-  .header {
-    position: relative;
+  .goodsDetailWarp {
+    padding-bottom: 120px;
+    .header {
+      position: relative;
+    }
   }
 }

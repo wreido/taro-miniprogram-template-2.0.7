@@ -14,7 +14,7 @@
     .goods-img {
       position: relative;
       @include wh(702px, 396px);
-      image {
+      .image {
         @include wh(702px, 396px);
       }
       .label {
@@ -41,7 +41,7 @@
           @include center;
           border-radius: 0;
           padding: 0;
-          image {
+          .image {
             width: 110px;
             height: 110px;
           }
@@ -120,12 +120,12 @@
             display: flex;
             align-items: baseline;
             .sale-price {
-              text:nth-child(1) {
+              .text:nth-child(1) {
                 font-size: 20px;
                 color: #ef3233;
                 font-weight: bold;
               }
-              text:nth-child(2) {
+              .text:nth-child(2) {
                 font-size: 40px;
                 color: #ef3233;
                 font-weight: bold;

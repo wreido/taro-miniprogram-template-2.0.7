@@ -52,7 +52,7 @@ class GetUserInfoAuthModal extends Component {
             </View>
             <View className='modal-body'>
               <View className='inner'>
-                <View className='coverimg'><Image mode='aspectFit' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/home/icon_wd_shouquan.png' /></View>
+                <View className='coverimg'><Image className='image' mode='aspectFit' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/home/icon_wd_shouquan.png' /></View>
                 <View className='tip'>
                   <View>亲~为了给您提供更好的服务</View>
                   <View>我们需要您的微信授权哦</View>

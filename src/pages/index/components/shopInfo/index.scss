@@ -10,11 +10,11 @@
   background-color: #fff;
   box-sizing: border-box;
   z-index: 1;
-  image {
+  .user-image {
     @include wh(54px, 54px);
     border-radius: 30px;
   }
-  text {
+  .user-name {
     font-size: 28px;
     font-weight: bold;
     margin-left: 10px;

@@ -88,7 +88,7 @@ class ShareModal extends Component {
         {
           showSharePosterModal && <View className='posterModal' catchtouchmove='ture'>
             <View className='posterImg'>
-              <Image src={posterImgUrl} />
+              <Image className='image' src={posterImgUrl} />
               <View className='close' onClick={() => { this.closeSharePosterModal() }}></View>
             </View>
             <View className='save' title='保存图片' onClick={() => { this.handleSavePoster() }}>保存图片</View>
@@ -101,12 +101,12 @@ class ShareModal extends Component {
             <View className='head'>分享给好友，TA购买你将得收益</View>
             <View className='body'>
               <Button className='item shareFriend' openType='share' title='分享微信好友' >
-                <View className='icon'><Icon></Icon></View>
-                <View className='text'><Text>分享给好友</Text></View>
+                <View className='icon'><Icon className='icon-image'></Icon></View>
+                <View className='text'><Text className='tip-text'>分享给好友</Text></View>
               </Button>
               <Button className='item shareQuan' onClick={this.hanldShareQuan} title='生成海报分享朋友圈'>
-                <View className='icon'><Icon></Icon></View>
-                <View className='text'><Text>生成图片</Text></View>
+                <View className='icon'><Icon className='icon-image'></Icon></View>
+                <View className='text'><Text className='tip-text'>生成图片</Text></View>
               </Button>
             </View>
             <View className='foot' onClick={() => { this.closeShareModal() }}>取消</View>

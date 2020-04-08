@@ -35,12 +35,12 @@ class GoodsDetail extends Component {
           goodsList.map((goods) => {
             return <View className='goods' key={goods.goodId} onClick={this.toGoodsDetail.bind(this, goods.goodId)}>
               <View className='goods-img'>
-                <Image mode='aspectFill' src={ossProcess(goods.mainSquareImage, 'resizeFill', { width: 702, height: 396 })} />
+                <Image className='image' mode='aspectFill' src={ossProcess(goods.mainSquareImage, 'resizeFill', { width: 702, height: 396 })} />
 
                 {goods.status === 0 && goods.tagShowVOList.length > 0 && <View className='label tag tagShowVOList'>{goods.tagShowVOList[0].name}</View>}
                 {goods.status === 1 && <View className='label tag ahead'>{utils.timeStr(utils.formatDate(goods.goodsSalesBeginTime, 'MM-DD HH:mm'))}</View>}
-                {(goods.status === -2 || goods.status == 2) && <View className='label looting'><Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/index/state_sy_lootall.png'></Image></View>}
-                {(goods.status === -1) && <View className='label end'><Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/index/state_sy_end.png'></Image></View>}
+                {(goods.status === -2 || goods.status == 2) && <View className='label looting'><Image className='image' mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/index/state_sy_lootall.png'></Image></View>}
+                {(goods.status === -1) && <View className='label end'><Image className='image' mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/index/state_sy_end.png'></Image></View>}
 
               </View>
               <View className='goods-info'>
@@ -56,7 +56,7 @@ class GoodsDetail extends Component {
                   <View className='price-inner'>
 
                     <View className='price'>
-                      <View className='sale-price'><Text>￥</Text> <Text>{goods.price}</Text></View>
+                      <View className='sale-price'><Text className='text'>￥</Text> <Text className='text'>{goods.price}</Text></View>
                       <View className='original-price'>￥{goods.originalPrice}</View>
                     </View>
 

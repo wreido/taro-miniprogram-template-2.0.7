@@ -24,7 +24,7 @@ class Banner extends Component {
               slideLists.map((item) => {
                 return <SwiperItem key={item.adId}>
                   <View className='banner-item'>
-                    <Image mode='aspectFill' src={ossProcess(item.image, 'resizeFill', { width: 702, height: 240 })} />
+                    <Image className='image' mode='aspectFill' src={ossProcess(item.image, 'resizeFill', { width: 702, height: 240 })} />
                   </View>
                 </SwiperItem>
               })

@@ -33,7 +33,6 @@
         }
       }
     }
-
     .modal-body {
       display: flex;
       justify-content: center;
@@ -46,14 +45,13 @@
         .coverimg {
           display: flex;
           justify-content: center;
-          image {
+          .image {
             width: 180px;
             height: 180px;
           }
         }
       }
     }
-
     .modal-foot {
       .besure {
         background: linear-gradient(left, #fe9424, #ff7113);

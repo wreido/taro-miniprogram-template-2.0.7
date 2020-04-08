@@ -6,10 +6,14 @@ import { View, Image } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 import './index.scss'
 
-@inject('mainFlow')
+@inject('appFlow', 'mainFlow')
 @observer
 
 class PayBoxWarp extends Component {
+
+  static options = {
+    addGlobalClass: true
+  }
 
   static defaultProps = {
     goodsDetail: {}
@@ -17,9 +21,10 @@ class PayBoxWarp extends Component {
 
   render() {
     const { goodsDetail } = this.props
+    const { isIphoneX } = this.props.appFlow
 
     return (
-      <View className='payBoxWarp'>
+      <View className={!isIphoneX ? 'payBoxWarp' : 'payBoxWarp isIphoneX'}>
         <View className='to-home'>
           <Image src='../../../../../assets/images/tabBarIcon/home_off.png' />
         </View>
