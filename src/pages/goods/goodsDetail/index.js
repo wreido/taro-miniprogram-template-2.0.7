@@ -16,6 +16,7 @@ import ShopInfo from './components/shopInfo'
 import GoodsIntroduce from './components/goodsIntroduce'
 import UseRule from './components/useRule'
 import PayBox from './components/payBox'
+import VideoModle from './components/videoModle'
 
 import './index.scss'
 
@@ -117,6 +118,8 @@ class GoodsDetail extends Component {
           <Banner goodsDetail={goodsDetail}></Banner>
           {/* 收益 */}
           <Profit goodsDetail={goodsDetail}></Profit>
+          {/* 视频 */}
+          <VideoModle goodsDetail={goodsDetail}></VideoModle>
         </View>
 
         {/* 商品信息 */}

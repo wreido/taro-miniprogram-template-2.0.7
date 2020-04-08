@@ -3,11 +3,15 @@
 */
 import Taro, { Component } from '@tarojs/taro'
 import { View, Swiper, SwiperItem, Image } from '@tarojs/components'
+import { observer, inject } from '@tarojs/mobx'
 import ossProcess from '@/utils/ossProcess'
 import utils from '@/utils'
 import './index.scss'
 
 const playIconImage = require('@/assets/images/video_play.png')
+
+@inject('goodsDetailFlow')
+@observer
 
 class Banner extends Component {
 
@@ -27,6 +31,7 @@ class Banner extends Component {
   // 播放视频
   playVideo = (e) => {
     e.stopPropagation()
+    this.props.goodsDetailFlow.showVideo = true
   }
 
   render() {

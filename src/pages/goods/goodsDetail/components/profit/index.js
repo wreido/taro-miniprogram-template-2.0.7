@@ -1,5 +1,5 @@
 /* 
-* 首页 收益
+* 收益
 */
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
@@ -21,7 +21,7 @@ class Profit extends Component {
     const { hasHead } = this.props.loginFlow.userInfo.user.roles || {}
     const { goodsDetail } = this.props
 
-    if (userId) {
+    if (userId && (goodsDetail.operatorCommission > 0 || goodsDetail.justCommission > 0)) {
       return (
         <View className='profitWarp' >
           {/* 是运营商 或 收益设置为零的运营商 则显示运营商收益 */}
