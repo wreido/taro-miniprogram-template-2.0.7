@@ -92,7 +92,7 @@ class Header extends Component {
             <View className='userInfo'>
               {/* 用户头像 */}
               <View className='user-img'>
-                <Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/ushare/local/index/moren.png' />
+                <Image mode='aspectFill' className='image' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/ushare/local/index/moren.png' />
               </View>
               {/* 用户昵称 用户手机号 */}
               <View className='user'>
@@ -102,7 +102,7 @@ class Header extends Component {
               </View>
             </View>
             {/* 生成海报 */}
-            <View className='user-code'><Image mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/home/grzx_code.png' /></View>
+            <View className='user-code'><Image className='share-btn' mode='aspectFill' src='https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/home/grzx_code.png' /></View>
           </View>
         </View>
       )
