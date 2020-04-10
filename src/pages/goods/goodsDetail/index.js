@@ -20,7 +20,7 @@ import VideoModle from './components/videoModle'
 
 import './index.scss'
 
-@inject('loginFlow')
+@inject('loginFlow', 'appFlow')
 @observer
 
 class GoodsDetail extends Component {
@@ -110,9 +110,10 @@ class GoodsDetail extends Component {
 
   render() {
     const { goodsDetail, goodsDetailHtml } = this.state
+    const { isIphoneX } = this.props.appFlow
 
     return (
-      <View className='goodsDetailWarp'>
+      <View className={!isIphoneX ? 'goodsDetailWarp' : 'goodsDetailWarp isIphoneX'}>
         <View className='header'>
           {/* 商品图 */}
           <Banner goodsDetail={goodsDetail}></Banner>
