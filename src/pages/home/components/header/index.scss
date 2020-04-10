@@ -2,9 +2,8 @@
 
 .headerWarp {
   width: 100vw;
-  background: #ff7113
-    url(https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/home/info_bg.png)
-    0 0 no-repeat;
+  background: #ff7113 url(https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/home/info_bg.png) 0 0
+    no-repeat;
   background-size: 100% 100%;
   padding: 40px 50px 108px;
   box-sizing: border-box;
@@ -12,7 +11,7 @@
     @include center;
     font-size: 36px;
     color: #ffffff;
-    padding: 40px 0 40px;
+    padding: 40px 0 0;
     font-weight: 500;
   }
   .userInfo-box {
@@ -56,8 +55,8 @@
             color: #fff;
             border-radius: 50%;
             padding: 0;
-            background: url(https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/index/shuaxin.png)
-              0 0 no-repeat;
+            background: url(https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/index/shuaxin.png) 0 0
+              no-repeat;
             background-size: 100%;
             margin: 0;
           }
