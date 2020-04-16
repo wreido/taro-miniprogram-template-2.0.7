@@ -9,7 +9,7 @@ const ShareFlow = observable({
   isIphoneX: false,
   async getSystemInfo() {
     this.systemInfo = await Taro.getSystemInfo() || {}
-    if (this.systemInfo.model.search('iPhone X') !== -1) {
+    if (this.systemInfo.model.search('iPhone X') !== -1 || this.systemInfo.model.search('iPhone 11') !== -1) {
       this.isIphoneX = true
     }
   }

@@ -1,5 +1,3 @@
-@import "../../../../assets/style/mixins.scss";
-
 .balance {
   width: 702px;
   background-color: #ffffff;
@@ -19,8 +17,8 @@
   }
   .balance-header {
     @include wh(100%, 108px);
-    background: url(https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/home/bg_daitixian.png)
-      center center no-repeat;
+    background: url(https://hsrj.oss-cn-shenzhen.aliyuncs.com/underline/zy-mp/local/home/bg_daitixian.png) center center
+      no-repeat;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,11 +43,7 @@
     }
     .balance-header-right {
       @include wh(150px, 60px);
-      background: linear-gradient(
-        90deg,
-        rgba(249, 223, 137, 1),
-        rgba(229, 176, 100, 1)
-      );
+      background: linear-gradient(90deg, rgba(249, 223, 137, 1), rgba(229, 176, 100, 1));
       border-radius: 30px;
       color: #333333;
       font-size: 26px;

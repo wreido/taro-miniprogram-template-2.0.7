@@ -15,6 +15,9 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
+  sass: {
+    resource: path.resolve(__dirname, '..', 'src/assets/style/mixins.scss')
+  },
   babel: {
     sourceMap: true,
     presets: [
